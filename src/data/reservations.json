@@ -1,0 +1,574 @@
+{
+  "restaurantConfig": {
+    "brandName": "Rezy",
+    "operatingHours": {
+      "open": 10,
+      "close": 22,
+      "timezone": "Europe/Istanbul"
+    },
+    "layout": {
+      "floors": ["Main Floor", "Terrace", "VIP", "Garden"],
+      "tables": [
+        { "id": "Bar-1", "capacity": 1, "floor": "Main Floor" },
+        { "id": "Bar-2", "capacity": 1, "floor": "Main Floor" },
+        { "id": "A1", "capacity": 2, "floor": "Main Floor" },
+        { "id": "A2", "capacity": 2, "floor": "Main Floor" },
+        { "id": "A3", "capacity": 4, "floor": "Main Floor" },
+        { "id": "A4", "capacity": 4, "floor": "Main Floor" },
+        { "id": "A5", "capacity": 6, "floor": "Main Floor" },
+        { "id": "T1", "capacity": 2, "floor": "Terrace" },
+        { "id": "T2", "capacity": 2, "floor": "Terrace" },
+        { "id": "T3", "capacity": 4, "floor": "Terrace" },
+        { "id": "V1", "capacity": 2, "floor": "VIP" },
+        { "id": "V4", "capacity": 10, "floor": "VIP" },
+        { "id": "G4", "capacity": 6, "floor": "Garden" }
+      ]
+    }
+  },
+  "reservations": [
+    {
+      "uid": "R-101",
+      "status": "COMPLETED",
+      "customer": { "fullName": "Liam Smith" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "10:00",
+        "endTime": "11:30",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-102",
+      "status": "COMPLETED",
+      "customer": { "fullName": "Olivia Brown" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "10:30",
+        "endTime": "12:00",
+        "floor": "Main Floor",
+        "tableId": "A3",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-103",
+      "status": "ARRIVED",
+      "customer": { "fullName": "Noah Williams" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "12:00",
+        "endTime": "14:00",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-104",
+      "status": "ARRIVED",
+      "customer": { "fullName": "Emma Jones" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "12:30",
+        "endTime": "14:30",
+        "floor": "Main Floor",
+        "tableId": "A4",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-105",
+      "status": "RESERVED",
+      "customer": { "fullName": "Oliver Garcia" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "14:30",
+        "endTime": "16:30",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-106",
+      "status": "ARRIVED",
+      "customer": { "fullName": "Sophia Miller" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "13:00",
+        "endTime": "15:00",
+        "floor": "VIP",
+        "tableId": "V4",
+        "partySize": 8
+      }
+    },
+    {
+      "uid": "R-107",
+      "status": "COMPLETED",
+      "customer": { "fullName": "James Davis" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "11:00",
+        "endTime": "12:30",
+        "floor": "Terrace",
+        "tableId": "T1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-108",
+      "status": "RESERVED",
+      "customer": { "fullName": "Isabella Rodriguez" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "17:00",
+        "endTime": "19:00",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-109",
+      "status": "ARRIVED",
+      "customer": { "fullName": "Benjamin Martinez" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "15:00",
+        "endTime": "17:30",
+        "floor": "Main Floor",
+        "tableId": "A5",
+        "partySize": 5
+      }
+    },
+    {
+      "uid": "R-110",
+      "status": "RESERVED",
+      "customer": { "fullName": "Mia Hernandez" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "19:00",
+        "endTime": "21:00",
+        "floor": "Main Floor",
+        "tableId": "A3",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-111",
+      "status": "COMPLETED",
+      "customer": { "fullName": "Lucas Lopez" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "10:00",
+        "endTime": "11:00",
+        "floor": "Main Floor",
+        "tableId": "Bar-1",
+        "partySize": 1
+      }
+    },
+    {
+      "uid": "R-112",
+      "status": "ARRIVED",
+      "customer": { "fullName": "Charlotte Gonzalez" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "12:00",
+        "endTime": "13:30",
+        "floor": "Main Floor",
+        "tableId": "Bar-1",
+        "partySize": 1
+      }
+    },
+    {
+      "uid": "R-113",
+      "status": "RESERVED",
+      "customer": { "fullName": "Amelia Wilson" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "18:00",
+        "endTime": "20:30",
+        "floor": "VIP",
+        "tableId": "V4",
+        "partySize": 10
+      }
+    },
+    {
+      "uid": "R-114",
+      "status": "ARRIVED",
+      "customer": { "fullName": "Harper Anderson" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "14:00",
+        "endTime": "16:00",
+        "floor": "Terrace",
+        "tableId": "T3",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-115",
+      "status": "RESERVED",
+      "customer": { "fullName": "Evelyn Taylor" },
+      "assignment": {
+        "date": "2026-02-21",
+        "startTime": "19:30",
+        "endTime": "21:30",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-201",
+      "status": "RESERVED",
+      "customer": { "fullName": "Mason Thomas" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "10:30",
+        "endTime": "12:30",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-202",
+      "status": "RESERVED",
+      "customer": { "fullName": "Logan Moore" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "13:00",
+        "endTime": "15:00",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-203",
+      "status": "RESERVED",
+      "customer": { "fullName": "Alexander Jackson" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "16:00",
+        "endTime": "18:00",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-204",
+      "status": "RESERVED",
+      "customer": { "fullName": "Elijah White" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "19:00",
+        "endTime": "21:30",
+        "floor": "Main Floor",
+        "tableId": "A1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-205",
+      "status": "RESERVED",
+      "customer": { "fullName": "Ethan Harris" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "12:00",
+        "endTime": "14:30",
+        "floor": "Main Floor",
+        "tableId": "A5",
+        "partySize": 6
+      }
+    },
+    {
+      "uid": "R-206",
+      "status": "RESERVED",
+      "customer": { "fullName": "Aiden Martin" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "15:30",
+        "endTime": "18:00",
+        "floor": "Main Floor",
+        "tableId": "A5",
+        "partySize": 6
+      }
+    },
+    {
+      "uid": "R-207",
+      "status": "RESERVED",
+      "customer": { "fullName": "Gabriel Thompson" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "floor": "Terrace",
+        "tableId": "T2",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-208",
+      "status": "RESERVED",
+      "customer": { "fullName": "Henry Wood" },
+      "assignment": {
+        "date": "2026-02-22",
+        "startTime": "18:00",
+        "endTime": "20:00",
+        "floor": "Garden",
+        "tableId": "G4",
+        "partySize": 6
+      }
+    },
+    {
+      "uid": "R-301",
+      "status": "RESERVED",
+      "customer": { "fullName": "Jackson Lewis" },
+      "assignment": {
+        "date": "2026-02-23",
+        "startTime": "12:00",
+        "endTime": "14:00",
+        "floor": "Main Floor",
+        "tableId": "A2",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-302",
+      "status": "RESERVED",
+      "customer": { "fullName": "Sebastian Clark" },
+      "assignment": {
+        "date": "2026-02-23",
+        "startTime": "14:30",
+        "endTime": "16:30",
+        "floor": "Main Floor",
+        "tableId": "A2",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-303",
+      "status": "RESERVED",
+      "customer": { "fullName": "Jack Walker" },
+      "assignment": {
+        "date": "2026-02-23",
+        "startTime": "18:00",
+        "endTime": "20:00",
+        "floor": "Main Floor",
+        "tableId": "A2",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-304",
+      "status": "RESERVED",
+      "customer": { "fullName": "Owen Hall" },
+      "assignment": {
+        "date": "2026-02-23",
+        "startTime": "11:00",
+        "endTime": "12:30",
+        "floor": "Bar-1",
+        "partySize": 1
+      }
+    },
+    {
+      "uid": "R-305",
+      "status": "RESERVED",
+      "customer": { "fullName": "Theodore Young" },
+      "assignment": {
+        "date": "2026-02-23",
+        "startTime": "13:00",
+        "endTime": "14:30",
+        "floor": "Bar-1",
+        "partySize": 1
+      }
+    },
+    {
+      "uid": "R-306",
+      "status": "RESERVED",
+      "customer": { "fullName": "Aria King" },
+      "assignment": {
+        "date": "2026-02-23",
+        "startTime": "19:00",
+        "endTime": "21:30",
+        "floor": "VIP",
+        "tableId": "V4",
+        "partySize": 10
+      }
+    },
+    {
+      "uid": "R-401",
+      "status": "RESERVED",
+      "customer": { "fullName": "Samuel Wright" },
+      "assignment": {
+        "date": "2026-02-24",
+        "startTime": "12:00",
+        "endTime": "14:30",
+        "floor": "Main Floor",
+        "tableId": "A3",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-402",
+      "status": "RESERVED",
+      "customer": { "fullName": "David Scott" },
+      "assignment": {
+        "date": "2026-02-24",
+        "startTime": "15:00",
+        "endTime": "17:30",
+        "floor": "Main Floor",
+        "tableId": "A3",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-403",
+      "status": "RESERVED",
+      "customer": { "fullName": "Joseph Green" },
+      "assignment": {
+        "date": "2026-02-24",
+        "startTime": "18:30",
+        "endTime": "21:00",
+        "floor": "Main Floor",
+        "tableId": "A3",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-404",
+      "status": "RESERVED",
+      "customer": { "fullName": "Carter Adams" },
+      "assignment": {
+        "date": "2026-02-24",
+        "startTime": "11:00",
+        "endTime": "13:00",
+        "floor": "Terrace",
+        "tableId": "T3",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-501",
+      "status": "RESERVED",
+      "customer": { "fullName": "Wyatt Baker" },
+      "assignment": {
+        "date": "2026-02-25",
+        "startTime": "13:00",
+        "endTime": "15:00",
+        "floor": "Main Floor",
+        "tableId": "A4",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-502",
+      "status": "RESERVED",
+      "customer": { "fullName": "John Rivera" },
+      "assignment": {
+        "date": "2026-02-25",
+        "startTime": "16:00",
+        "endTime": "18:00",
+        "floor": "Main Floor",
+        "tableId": "A4",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-503",
+      "status": "RESERVED",
+      "customer": { "fullName": "Luke Campbell" },
+      "assignment": {
+        "date": "2026-02-25",
+        "startTime": "19:00",
+        "endTime": "21:30",
+        "floor": "Main Floor",
+        "tableId": "A4",
+        "partySize": 4
+      }
+    },
+    {
+      "uid": "R-601",
+      "status": "RESERVED",
+      "customer": { "fullName": "Isaac Mitchell" },
+      "assignment": {
+        "date": "2026-02-26",
+        "startTime": "12:00",
+        "endTime": "14:00",
+        "floor": "VIP",
+        "tableId": "V1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-602",
+      "status": "RESERVED",
+      "customer": { "fullName": "Dylan Roberts" },
+      "assignment": {
+        "date": "2026-02-26",
+        "startTime": "15:00",
+        "endTime": "17:00",
+        "floor": "VIP",
+        "tableId": "V1",
+        "partySize": 2
+      }
+    },
+    {
+      "uid": "R-603",
+      "status": "RESERVED",
+      "customer": { "fullName": "Grayson Carter" },
+      "assignment": {
+        "date": "2026-02-26",
+        "startTime": "18:00",
+        "endTime": "21:00",
+        "floor": "VIP",
+        "tableId": "V4",
+        "partySize": 8
+      }
+    },
+    {
+      "uid": "R-701",
+      "status": "RESERVED",
+      "customer": { "fullName": "Levi Phillips" },
+      "assignment": {
+        "date": "2026-02-27",
+        "startTime": "18:00",
+        "endTime": "20:00",
+        "floor": "Main Floor",
+        "tableId": "A5",
+        "partySize": 6
+      }
+    },
+    {
+      "uid": "R-702",
+      "status": "RESERVED",
+      "customer": { "fullName": "Daniel Evans" },
+      "assignment": {
+        "date": "2026-02-27",
+        "startTime": "20:00",
+        "endTime": "22:00",
+        "floor": "Main Floor",
+        "tableId": "A5",
+        "partySize": 6
+      }
+    },
+    {
+      "uid": "R-703",
+      "status": "RESERVED",
+      "customer": { "fullName": "Gabriel Perez" },
+      "assignment": {
+        "date": "2026-02-27",
+        "startTime": "19:00",
+        "endTime": "21:30",
+        "floor": "Terrace",
+        "tableId": "T3",
+        "partySize": 4
+      }
+    }
+  ]
+}

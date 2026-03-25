@@ -1,0 +1,3848 @@
+[
+  {
+    "_id": "ord_101",
+    "table": "5",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Mercimek Çorbası",
+        "price": 65,
+        "qt": 2,
+        "category": "Çorba"
+      },
+      {
+        "name": "Adana Kebap",
+        "price": 320,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 35,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 840,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-01-12T13:20:00Z"
+  },
+  {
+    "_id": "ord_102",
+    "table": "12",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Margherita Pizza",
+        "price": 210,
+        "qt": 1,
+        "category": "Pizza"
+      },
+      {
+        "name": "Kola",
+        "price": 45,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 255,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-02-15T19:45:00Z"
+  },
+  {
+    "_id": "ord_103",
+    "table": "3",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Köy Kahvaltısı",
+        "price": 280,
+        "qt": 2,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Sınırsız Çay",
+        "price": 40,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 640,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-03-20T10:15:00Z"
+  },
+  {
+    "_id": "ord_104",
+    "table": "18",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Fettuccine Alfredo",
+        "price": 240,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Tiramisu",
+        "price": 110,
+        "qt": 1,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 350,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-04-05T21:10:00Z"
+  },
+  {
+    "_id": "ord_105",
+    "table": "7",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Levrek Izgara",
+        "price": 450,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Roka Salatası",
+        "price": 85,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 180,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 715,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-05-22T20:30:00Z"
+  },
+  {
+    "_id": "ord_106",
+    "table": "22",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Kuzu Şiş",
+        "price": 380,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Gavurdağı",
+        "price": 95,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Şalgam",
+        "price": 30,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 915,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-06-14T14:50:00Z"
+  },
+  {
+    "_id": "ord_107",
+    "table": "1",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Cheese Burger",
+        "price": 260,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Patates Tava",
+        "price": 90,
+        "qt": 1,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Milkshake",
+        "price": 95,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 800,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-07-30T16:20:00Z"
+  },
+  {
+    "_id": "ord_108",
+    "table": "9",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Mantı",
+        "price": 190,
+        "qt": 3,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Turşu Tabağı",
+        "price": 50,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 620,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-08-11T12:40:00Z"
+  },
+  {
+    "_id": "ord_109",
+    "table": "14",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Karışık Pizza",
+        "price": 250,
+        "qt": 1,
+        "category": "Pizza"
+      },
+      {
+        "name": "Soğan Halkası",
+        "price": 70,
+        "qt": 1,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Kola",
+        "price": 45,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 365,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-09-02T18:15:00Z"
+  },
+  {
+    "_id": "ord_110",
+    "table": "30",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Bonfile Steak",
+        "price": 580,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kuşkonmaz",
+        "price": 120,
+        "qt": 1,
+        "category": "Garnitür"
+      },
+      {
+        "name": "Kırmızı Şarap",
+        "price": 210,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 910,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-10-18T22:00:00Z"
+  },
+  {
+    "_id": "ord_111",
+    "table": "4",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Tavuklu Wrap",
+        "price": 180,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Limonata",
+        "price": 60,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 480,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-11-25T13:10:00Z"
+  },
+  {
+    "_id": "ord_112",
+    "table": "11",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "İskender Kebap",
+        "price": 340,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Künefe",
+        "price": 130,
+        "qt": 1,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Çay",
+        "price": 20,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 490,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-12-31T20:30:00Z"
+  },
+  {
+    "_id": "ord_113",
+    "table": "15",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Beyti Sarma",
+        "price": 360,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Cacık",
+        "price": 45,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 405,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-01-05T14:20:00Z"
+  },
+  {
+    "_id": "ord_114",
+    "table": "2",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Sebzeli Risotto",
+        "price": 260,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Maden Suyu",
+        "price": 25,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 285,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-01-20T19:00:00Z"
+  },
+  {
+    "_id": "ord_115",
+    "table": "25",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Lahmacun",
+        "price": 85,
+        "qt": 4,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Salata",
+        "price": 60,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Ayran",
+        "price": 35,
+        "qt": 4,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 540,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-02-12T12:30:00Z"
+  },
+  {
+    "_id": "ord_116",
+    "table": "8",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Somon Izgara",
+        "price": 490,
+        "qt": 2,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Deniz Börülcesi",
+        "price": 110,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      }
+    ],
+    "totalAmount": 1090,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-02-28T20:15:00Z"
+  },
+  {
+    "_id": "ord_117",
+    "table": "33",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Spagetti Bolonez",
+        "price": 230,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Profiterol",
+        "price": 95,
+        "qt": 1,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 325,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-03-10T18:40:00Z"
+  },
+  {
+    "_id": "ord_118",
+    "table": "10",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Kalamar Tava",
+        "price": 310,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Karides Güveç",
+        "price": 340,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Bira",
+        "price": 120,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 890,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-03-25T21:50:00Z"
+  },
+  {
+    "_id": "ord_119",
+    "table": "6",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Tavuk Şiş",
+        "price": 240,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Bulgur Pilavı",
+        "price": 60,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 540,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-04-12T14:10:00Z"
+  },
+  {
+    "_id": "ord_120",
+    "table": "19",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Lasagna",
+        "price": 280,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Sarımsaklı Ekmek",
+        "price": 75,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 355,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-04-29T20:00:00Z"
+  },
+  {
+    "_id": "ord_121",
+    "table": "13",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sushi Set",
+        "price": 650,
+        "qt": 1,
+        "category": "Sushi & Uzakdoğu"
+      },
+      {
+        "name": "Sake",
+        "price": 190,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 840,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-05-15T19:30:00Z"
+  },
+  {
+    "_id": "ord_122",
+    "table": "40",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Kuzu Tandır",
+        "price": 440,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "İç Pilav",
+        "price": 90,
+        "qt": 2,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 1060,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-05-30T13:45:00Z"
+  },
+  {
+    "_id": "ord_123",
+    "table": "21",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Double Burger",
+        "price": 320,
+        "qt": 3,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Patates",
+        "price": 80,
+        "qt": 3,
+        "category": "Burger & Fast Food"
+      }
+    ],
+    "totalAmount": 1200,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-06-18T17:20:00Z"
+  },
+  {
+    "_id": "ord_124",
+    "table": "5",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sezar Salata",
+        "price": 185,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Limonata",
+        "price": 65,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 250,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-06-25T12:00:00Z"
+  },
+  {
+    "_id": "ord_125",
+    "table": "16",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Ali Nazik",
+        "price": 370,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Şalgam",
+        "price": 35,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 810,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-07-10T19:15:00Z"
+  },
+  {
+    "_id": "ord_126",
+    "table": "28",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Pizza Funghi",
+        "price": 230,
+        "qt": 1,
+        "category": "Pizza"
+      },
+      {
+        "name": "Kola",
+        "price": 50,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 280,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-07-22T21:40:00Z"
+  },
+  {
+    "_id": "ord_127",
+    "table": "3",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Humus",
+        "price": 95,
+        "qt": 2,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Falafel Tabağı",
+        "price": 210,
+        "qt": 2,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 610,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-08-05T13:55:00Z"
+  },
+  {
+    "_id": "ord_128",
+    "table": "11",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Antrikot",
+        "price": 520,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Püre",
+        "price": 70,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 590,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-08-19T20:10:00Z"
+  },
+  {
+    "_id": "ord_129",
+    "table": "24",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Çöp Şiş",
+        "price": 290,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 40,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 660,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-09-14T14:30:00Z"
+  },
+  {
+    "_id": "ord_130",
+    "table": "35",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sıcak Ot Tabağı",
+        "price": 140,
+        "qt": 1,
+        "category": "Başlangıç"
+      },
+      {
+        "name": "Ahtapot Izgara",
+        "price": 480,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      }
+    ],
+    "totalAmount": 620,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-09-28T21:00:00Z"
+  },
+  {
+    "_id": "ord_131",
+    "table": "7",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Tavuk Schnitzel",
+        "price": 240,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Bira",
+        "price": 130,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 370,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-10-12T19:40:00Z"
+  },
+  {
+    "_id": "ord_132",
+    "table": "12",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Domates Çorbası",
+        "price": 75,
+        "qt": 2,
+        "category": "Çorba"
+      },
+      {
+        "name": "Penne Arrabbiata",
+        "price": 210,
+        "qt": 2,
+        "category": "Makarna"
+      }
+    ],
+    "totalAmount": 570,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-10-30T13:15:00Z"
+  },
+  {
+    "_id": "ord_133",
+    "table": "20",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Dana Kaburga",
+        "price": 620,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Fırın Patates",
+        "price": 85,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 705,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-11-15T20:50:00Z"
+  },
+  {
+    "_id": "ord_134",
+    "table": "2",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Mercimek Çorbası",
+        "price": 80,
+        "qt": 1,
+        "category": "Çorba"
+      },
+      {
+        "name": "Kıymalı Pide",
+        "price": 220,
+        "qt": 1,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 300,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-11-28T12:20:00Z"
+  },
+  {
+    "_id": "ord_135",
+    "table": "17",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Waffle",
+        "price": 160,
+        "qt": 2,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Filtre Kahve",
+        "price": 85,
+        "qt": 2,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 490,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-12-10T16:45:00Z"
+  },
+  {
+    "_id": "ord_136",
+    "table": "38",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Karışık Kebap",
+        "price": 650,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kola",
+        "price": 55,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 705,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-12-24T20:10:00Z"
+  },
+  {
+    "_id": "ord_137",
+    "table": "4",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Serpme Kahvaltı",
+        "price": 380,
+        "qt": 2,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Portakal Suyu",
+        "price": 95,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 950,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-01-08T10:30:00Z"
+  },
+  {
+    "_id": "ord_138",
+    "table": "9",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Veggie Burger",
+        "price": 270,
+        "qt": 1,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Limonata",
+        "price": 70,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 340,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-01-20T14:50:00Z"
+  },
+  {
+    "_id": "ord_139",
+    "table": "14",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Kalamar Izgara",
+        "price": 340,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Karides Söğüş",
+        "price": 280,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Rakı",
+        "price": 220,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 1060,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-02-05T21:15:00Z"
+  },
+  {
+    "_id": "ord_140",
+    "table": "26",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "İçli Köfte",
+        "price": 65,
+        "qt": 4,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Adana Kebap",
+        "price": 360,
+        "qt": 2,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 980,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-02-18T19:30:00Z"
+  },
+  {
+    "_id": "ord_141",
+    "table": "31",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Sushi Mix",
+        "price": 780,
+        "qt": 1,
+        "category": "Sushi & Uzakdoğu"
+      },
+      {
+        "name": "Sake",
+        "price": 210,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 990,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-02T20:45:00Z"
+  },
+  {
+    "_id": "ord_142",
+    "table": "8",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Menemen",
+        "price": 140,
+        "qt": 2,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Çay",
+        "price": 30,
+        "qt": 4,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 400,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-10T09:15:00Z"
+  },
+  {
+    "_id": "ord_143",
+    "table": "15",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Etli Ekmek",
+        "price": 240,
+        "qt": 3,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 45,
+        "qt": 3,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 855,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-14T15:20:00Z"
+  },
+  {
+    "_id": "ord_144",
+    "table": "12",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "T-Bone Steak",
+        "price": 750,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kırmızı Şarap",
+        "price": 250,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 1000,
+    "paymentMethod": "credit_card",
+    "isPaid": false,
+    "status": "preparing",
+    "createdAt": "2026-03-18T21:00:00Z"
+  },
+  {
+    "_id": "ord_145",
+    "table": "1",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Türk Kahvesi",
+        "price": 75,
+        "qt": 2,
+        "category": "Kahve & Çay"
+      },
+      {
+        "name": "Sütlaç",
+        "price": 120,
+        "qt": 1,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 270,
+    "paymentMethod": "cash",
+    "isPaid": false,
+    "status": "served",
+    "createdAt": "2026-03-18T22:30:00Z"
+  },
+  {
+    "_id": "ord_146",
+    "table": "22",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Quattro Formaggi",
+        "price": 310,
+        "qt": 1,
+        "category": "Pizza"
+      },
+      {
+        "name": "Kola",
+        "price": 60,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 370,
+    "paymentMethod": "qr",
+    "isPaid": false,
+    "status": "preparing",
+    "createdAt": "2026-03-18T23:10:00Z"
+  },
+  {
+    "_id": "ord_147",
+    "table": "10",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Günün Çorbası",
+        "price": 90,
+        "qt": 2,
+        "category": "Çorba"
+      },
+      {
+        "name": "Izgara Köfte",
+        "price": 280,
+        "qt": 2,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 740,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-03-15T13:00:00Z"
+  },
+  {
+    "_id": "ord_148",
+    "table": "19",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Paçanga Böreği",
+        "price": 110,
+        "qt": 2,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Kola",
+        "price": 55,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 330,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-06-10T18:30:00Z"
+  },
+  {
+    "_id": "ord_149",
+    "table": "5",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Somon Füme",
+        "price": 320,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Roze Şarap",
+        "price": 230,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 550,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-08-22T21:45:00Z"
+  },
+  {
+    "_id": "ord_150",
+    "table": "14",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Yayla Çorbası",
+        "price": 70,
+        "qt": 1,
+        "category": "Çorba"
+      },
+      {
+        "name": "Kuru Fasulye",
+        "price": 160,
+        "qt": 1,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Pilav",
+        "price": 80,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 310,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-11-05T12:50:00Z"
+  },
+  {
+    "_id": "ord_151",
+    "table": "33",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sıcak Çikolata",
+        "price": 95,
+        "qt": 2,
+        "category": "Kahve & Çay"
+      },
+      {
+        "name": "Mozaik Pasta",
+        "price": 110,
+        "qt": 1,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 300,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-01-14T16:20:00Z"
+  },
+  {
+    "_id": "ord_152",
+    "table": "2",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Fırın Beyti",
+        "price": 390,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Şıra",
+        "price": 60,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 450,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-04-10T19:30:00Z"
+  },
+  {
+    "_id": "ord_153",
+    "table": "11",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Mevsim Salatası",
+        "price": 85,
+        "qt": 2,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Tavuk Kanat",
+        "price": 260,
+        "qt": 2,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 690,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-07-05T20:15:00Z"
+  },
+  {
+    "_id": "ord_154",
+    "table": "25",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Hellim Izgara",
+        "price": 130,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Efeler Salatası",
+        "price": 160,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 290,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-09-20T13:40:00Z"
+  },
+  {
+    "_id": "ord_155",
+    "table": "7",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Deniz Mahsülleri Makarna",
+        "price": 420,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Prosecco",
+        "price": 350,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 770,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-12-01T21:00:00Z"
+  },
+  {
+    "_id": "ord_156",
+    "table": "16",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Çorba",
+        "price": 80,
+        "qt": 4,
+        "category": "Çorba"
+      },
+      {
+        "name": "Pide (Karışık)",
+        "price": 280,
+        "qt": 4,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 1440,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-02-10T12:45:00Z"
+  },
+  {
+    "_id": "ord_157",
+    "table": "3",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Cold Brew",
+        "price": 110,
+        "qt": 1,
+        "category": "Kahve & Çay"
+      },
+      {
+        "name": "San Sebastian",
+        "price": 160,
+        "qt": 1,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 270,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-15T15:30:00Z"
+  },
+  {
+    "_id": "ord_158",
+    "table": "18",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Yörük Kahvaltısı",
+        "price": 310,
+        "qt": 3,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Sıkma Portakal",
+        "price": 90,
+        "qt": 3,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 1200,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-05-05T10:00:00Z"
+  },
+  {
+    "_id": "ord_159",
+    "table": "12",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Napoliten Makarna",
+        "price": 195,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Limonata",
+        "price": 65,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 260,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-09-15T14:20:00Z"
+  },
+  {
+    "_id": "ord_160",
+    "table": "30",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Şiş Kebap",
+        "price": 350,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Humus",
+        "price": 110,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 810,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-12-20T20:45:00Z"
+  },
+  {
+    "_id": "ord_161",
+    "table": "6",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Ispanaklı Kiş",
+        "price": 180,
+        "qt": 1,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Çay",
+        "price": 25,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 230,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-02-25T11:30:00Z"
+  },
+  {
+    "_id": "ord_162",
+    "table": "21",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Meksika Burger",
+        "price": 310,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Nachos",
+        "price": 180,
+        "qt": 1,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Bira",
+        "price": 140,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 1080,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-05-18T22:00:00Z"
+  },
+  {
+    "_id": "ord_163",
+    "table": "14",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Izgara Somon",
+        "price": 520,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Brokoli",
+        "price": 95,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 615,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-08-10T19:10:00Z"
+  },
+  {
+    "_id": "ord_164",
+    "table": "35",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Etli Wrap",
+        "price": 260,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Ayran",
+        "price": 45,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 610,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-10-05T13:50:00Z"
+  },
+  {
+    "_id": "ord_165",
+    "table": "9",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Kuzu İncik",
+        "price": 480,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Keşkek",
+        "price": 120,
+        "qt": 1,
+        "category": "Türk Mutfağı"
+      }
+    ],
+    "totalAmount": 600,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-11-20T20:30:00Z"
+  },
+  {
+    "_id": "ord_166",
+    "table": "4",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sıcak Başlangıç Tabağı",
+        "price": 280,
+        "qt": 1,
+        "category": "Başlangıç"
+      },
+      {
+        "name": "Kola",
+        "price": 55,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 390,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-01-15T18:20:00Z"
+  },
+  {
+    "_id": "ord_167",
+    "table": "27",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Balık Çorbası",
+        "price": 140,
+        "qt": 2,
+        "category": "Çorba"
+      },
+      {
+        "name": "Çipura Izgara",
+        "price": 410,
+        "qt": 2,
+        "category": "Deniz Ürünleri"
+      }
+    ],
+    "totalAmount": 1100,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-02-28T14:40:00Z"
+  },
+  {
+    "_id": "ord_168",
+    "table": "20",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Espresso",
+        "price": 60,
+        "qt": 1,
+        "category": "Kahve & Çay"
+      },
+      {
+        "name": "Latte",
+        "price": 85,
+        "qt": 1,
+        "category": "Kahve & Çay"
+      },
+      {
+        "name": "Kurabiye",
+        "price": 45,
+        "qt": 2,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 235,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-12T16:15:00Z"
+  },
+  {
+    "_id": "ord_169",
+    "table": "13",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Pizza Turco",
+        "price": 290,
+        "qt": 2,
+        "category": "Pizza"
+      },
+      {
+        "name": "Şalgam",
+        "price": 40,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 660,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-02-20T19:30:00Z"
+  },
+  {
+    "_id": "ord_170",
+    "table": "5",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Tavuklu Pilav",
+        "price": 140,
+        "qt": 1,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Ayran",
+        "price": 35,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 175,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-04-12T13:10:00Z"
+  },
+  {
+    "_id": "ord_171",
+    "table": "22",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Patlıcan Kebabı",
+        "price": 380,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Künefe",
+        "price": 140,
+        "qt": 1,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 520,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-07-18T20:50:00Z"
+  },
+  {
+    "_id": "ord_172",
+    "table": "38",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Ege Kahvaltısı",
+        "price": 340,
+        "qt": 2,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Ekstra Bal-Kaymak",
+        "price": 95,
+        "qt": 1,
+        "category": "Kahvaltı"
+      }
+    ],
+    "totalAmount": 775,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-10-05T09:45:00Z"
+  },
+  {
+    "_id": "ord_173",
+    "table": "8",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "BBQ Burger",
+        "price": 295,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Bira",
+        "price": 145,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 880,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-01-22T21:20:00Z"
+  },
+  {
+    "_id": "ord_174",
+    "table": "15",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Penne Arrabbiata",
+        "price": 220,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Tiramisu",
+        "price": 120,
+        "qt": 1,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 340,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-03-14T18:40:00Z"
+  },
+  {
+    "_id": "ord_175",
+    "table": "1",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Mercimek Çorbası",
+        "price": 85,
+        "qt": 1,
+        "category": "Çorba"
+      },
+      {
+        "name": "Kuzu Şiş",
+        "price": 420,
+        "qt": 1,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 505,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-06-02T13:15:00Z"
+  },
+  {
+    "_id": "ord_176",
+    "table": "29",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Kalamar Tava",
+        "price": 340,
+        "qt": 2,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Rakı (35cl)",
+        "price": 850,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 1530,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-08-25T20:00:00Z"
+  },
+  {
+    "_id": "ord_177",
+    "table": "11",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Sebzeli Noodle",
+        "price": 240,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Yeşil Çay",
+        "price": 55,
+        "qt": 1,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 295,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-11-12T14:30:00Z"
+  },
+  {
+    "_id": "ord_178",
+    "table": "6",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Mantar Soslu Tavuk",
+        "price": 280,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Limonata",
+        "price": 75,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 710,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-02-04T19:50:00Z"
+  },
+  {
+    "_id": "ord_179",
+    "table": "34",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Waffle Meyveli",
+        "price": 185,
+        "qt": 1,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Türk Kahvesi",
+        "price": 80,
+        "qt": 1,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 265,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-10T17:10:00Z"
+  },
+  {
+    "_id": "ord_180",
+    "table": "2",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Domates Çorbası",
+        "price": 90,
+        "qt": 2,
+        "category": "Çorba"
+      },
+      {
+        "name": "Karışık Pizza",
+        "price": 320,
+        "qt": 2,
+        "category": "Pizza"
+      }
+    ],
+    "totalAmount": 820,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-03-22T12:45:00Z"
+  },
+  {
+    "_id": "ord_181",
+    "table": "17",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Edamame",
+        "price": 140,
+        "qt": 1,
+        "category": "Sushi & Uzakdoğu"
+      },
+      {
+        "name": "California Roll",
+        "price": 360,
+        "qt": 2,
+        "category": "Sushi & Uzakdoğu"
+      }
+    ],
+    "totalAmount": 860,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-07-10T21:15:00Z"
+  },
+  {
+    "_id": "ord_182",
+    "table": "10",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Beyti Sarma",
+        "price": 410,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 45,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 455,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-11-14T19:30:00Z"
+  },
+  {
+    "_id": "ord_183",
+    "table": "25",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Dana Rosto",
+        "price": 450,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Pilav",
+        "price": 80,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 530,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-02-02T13:40:00Z"
+  },
+  {
+    "_id": "ord_184",
+    "table": "3",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Tiramisu",
+        "price": 130,
+        "qt": 2,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Latte",
+        "price": 95,
+        "qt": 2,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 450,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-05-20T16:50:00Z"
+  },
+  {
+    "_id": "ord_185",
+    "table": "14",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Kalamar Izgara",
+        "price": 380,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 240,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 620,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-08-15T20:30:00Z"
+  },
+  {
+    "_id": "ord_186",
+    "table": "8",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Adana Kebap",
+        "price": 360,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Gavurdağı",
+        "price": 110,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 830,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-10-28T19:15:00Z"
+  },
+  {
+    "_id": "ord_187",
+    "table": "32",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Chicken Curry",
+        "price": 310,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Maden Suyu",
+        "price": 35,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 345,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-01-10T13:00:00Z"
+  },
+  {
+    "_id": "ord_188",
+    "table": "19",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Fıstıklı Katmer",
+        "price": 180,
+        "qt": 1,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Türk Çayı",
+        "price": 30,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 240,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-05T21:45:00Z"
+  },
+  {
+    "_id": "ord_189",
+    "table": "40",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Tavuklu Sezar Salata",
+        "price": 240,
+        "qt": 2,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Kola",
+        "price": 60,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 600,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-05-12T14:30:00Z"
+  },
+  {
+    "_id": "ord_190",
+    "table": "1",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Etli Lazanya",
+        "price": 320,
+        "qt": 1,
+        "category": "Makarna"
+      },
+      {
+        "name": "Sarımsaklı Ekmek",
+        "price": 90,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 410,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-09-02T20:15:00Z"
+  },
+  {
+    "_id": "ord_191",
+    "table": "11",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Mantar Çorbası",
+        "price": 85,
+        "qt": 2,
+        "category": "Çorba"
+      },
+      {
+        "name": "Antrikot",
+        "price": 550,
+        "qt": 2,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 1270,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-12-15T19:40:00Z"
+  },
+  {
+    "_id": "ord_192",
+    "table": "7",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Karides Güveç",
+        "price": 380,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Bira",
+        "price": 140,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 520,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-03-28T21:10:00Z"
+  },
+  {
+    "_id": "ord_193",
+    "table": "26",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "İç Pilav",
+        "price": 95,
+        "qt": 2,
+        "category": "Garnitür"
+      },
+      {
+        "name": "Kuzu Tandır",
+        "price": 480,
+        "qt": 2,
+        "category": "Ana Yemek"
+      }
+    ],
+    "totalAmount": 1150,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-06-15T14:20:00Z"
+  },
+  {
+    "_id": "ord_194",
+    "table": "4",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Double Cheese Burger",
+        "price": 340,
+        "qt": 1,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Patates",
+        "price": 90,
+        "qt": 1,
+        "category": "Burger & Fast Food"
+      }
+    ],
+    "totalAmount": 430,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-09-05T17:45:00Z"
+  },
+  {
+    "_id": "ord_195",
+    "table": "15",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Spagetti Carbonara",
+        "price": 280,
+        "qt": 2,
+        "category": "Makarna"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 210,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 980,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-11-25T20:50:00Z"
+  },
+  {
+    "_id": "ord_196",
+    "table": "10",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Limonlu Cheesecake",
+        "price": 130,
+        "qt": 1,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Americano",
+        "price": 85,
+        "qt": 1,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 215,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-02-14T16:30:00Z"
+  },
+  {
+    "_id": "ord_197",
+    "table": "23",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Çupra Izgara",
+        "price": 420,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Salata",
+        "price": 80,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 500,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-16T19:20:00Z"
+  },
+  {
+    "_id": "ord_198",
+    "table": "12",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Tavuklu Quesadilla",
+        "price": 270,
+        "qt": 1,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Kola",
+        "price": 60,
+        "qt": 1,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 330,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2024-06-20T13:40:00Z"
+  },
+  {
+    "_id": "ord_199",
+    "table": "5",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Kıymalı Pide",
+        "price": 230,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 40,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 540,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2025-04-12T12:15:00Z"
+  },
+  {
+    "_id": "ord_200",
+    "table": "18",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Sushi Boat Special",
+        "price": 1200,
+        "qt": 1,
+        "category": "Sushi & Uzakdoğu"
+      },
+      {
+        "name": "Sake",
+        "price": 250,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 1450,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-01-30T21:00:00Z"
+  },
+  {
+    "_id": "ord_201",
+    "table": "3",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Mercimek Çorbası",
+        "price": 85,
+        "qt": 2,
+        "category": "Çorba"
+      },
+      {
+        "name": "Adana Kebap",
+        "price": 360,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 40,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 970,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-20T10:15:00Z"
+  },
+  {
+    "_id": "ord_202",
+    "table": "7",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Karışık Pizza",
+        "price": 280,
+        "qt": 1,
+        "category": "Pizza"
+      },
+      {
+        "name": "Kola",
+        "price": 60,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 400,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-20T12:30:00Z"
+  },
+  {
+    "_id": "ord_203",
+    "table": "11",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Somon Izgara",
+        "price": 520,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 220,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 740,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-20T14:45:00Z"
+  },
+  {
+    "_id": "ord_204",
+    "table": "5",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "İskender Kebap",
+        "price": 360,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 45,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 810,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-20T17:00:00Z"
+  },
+  {
+    "_id": "ord_205",
+    "table": "14",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Antrikot",
+        "price": 550,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kırmızı Şarap",
+        "price": 240,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 790,
+    "paymentMethod": "credit_card",
+    "isPaid": false,
+    "status": "preparing",
+    "createdAt": "2026-03-20T19:20:00Z"
+  },
+  {
+    "_id": "ord_206",
+    "table": "9",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Tavuk Şiş",
+        "price": 250,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Bulgur Pilavı",
+        "price": 65,
+        "qt": 1,
+        "category": "Garnitür"
+      },
+      {
+        "name": "Limonata",
+        "price": 70,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 705,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-20T21:10:00Z"
+  },
+  {
+    "_id": "ord_207",
+    "table": "2",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Serpme Kahvaltı",
+        "price": 390,
+        "qt": 2,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Portakal Suyu",
+        "price": 95,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 970,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-21T09:30:00Z"
+  },
+  {
+    "_id": "ord_208",
+    "table": "16",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Margherita Pizza",
+        "price": 220,
+        "qt": 2,
+        "category": "Pizza"
+      },
+      {
+        "name": "Bira",
+        "price": 145,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 730,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-21T13:00:00Z"
+  },
+  {
+    "_id": "ord_209",
+    "table": "22",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Kuzu Tandır",
+        "price": 460,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "İç Pilav",
+        "price": 95,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 555,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-21T15:40:00Z"
+  },
+  {
+    "_id": "ord_210",
+    "table": "8",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Double Burger",
+        "price": 330,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Patates Tava",
+        "price": 95,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      }
+    ],
+    "totalAmount": 850,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-21T18:20:00Z"
+  },
+  {
+    "_id": "ord_211",
+    "table": "13",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Sushi Set",
+        "price": 680,
+        "qt": 1,
+        "category": "Sushi & Uzakdoğu"
+      },
+      {
+        "name": "Sake",
+        "price": 200,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 880,
+    "paymentMethod": "credit_card",
+    "isPaid": false,
+    "status": "preparing",
+    "createdAt": "2026-03-21T20:50:00Z"
+  },
+  {
+    "_id": "ord_212",
+    "table": "4",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Lahmacun",
+        "price": 90,
+        "qt": 4,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Ayran",
+        "price": 40,
+        "qt": 4,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 520,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-22T11:15:00Z"
+  },
+  {
+    "_id": "ord_213",
+    "table": "19",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Levrek Izgara",
+        "price": 480,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Roka Salatası",
+        "price": 90,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 570,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-22T13:30:00Z"
+  },
+  {
+    "_id": "ord_214",
+    "table": "25",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Mantı",
+        "price": 200,
+        "qt": 2,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Cacık",
+        "price": 50,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      }
+    ],
+    "totalAmount": 450,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-22T16:00:00Z"
+  },
+  {
+    "_id": "ord_215",
+    "table": "6",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Bonfile Steak",
+        "price": 600,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kırmızı Şarap",
+        "price": 220,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 820,
+    "paymentMethod": "qr",
+    "isPaid": false,
+    "status": "preparing",
+    "createdAt": "2026-03-22T19:45:00Z"
+  },
+  {
+    "_id": "ord_216",
+    "table": "1",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Köy Kahvaltısı",
+        "price": 295,
+        "qt": 3,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Sınırsız Çay",
+        "price": 45,
+        "qt": 3,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 1020,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-23T10:00:00Z"
+  },
+  {
+    "_id": "ord_217",
+    "table": "30",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Spagetti Bolonez",
+        "price": 240,
+        "qt": 2,
+        "category": "Makarna"
+      },
+      {
+        "name": "Limonata",
+        "price": 70,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 620,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-23T14:20:00Z"
+  },
+  {
+    "_id": "ord_218",
+    "table": "17",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Karides Güveç",
+        "price": 360,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 230,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 590,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-23T18:30:00Z"
+  },
+  {
+    "_id": "ord_219",
+    "table": "10",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Cheese Burger",
+        "price": 270,
+        "qt": 3,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Patates Tava",
+        "price": 95,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      }
+    ],
+    "totalAmount": 1000,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-23T21:00:00Z"
+  },
+  {
+    "_id": "ord_220",
+    "table": "21",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Waffle",
+        "price": 165,
+        "qt": 2,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Filtre Kahve",
+        "price": 90,
+        "qt": 2,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 510,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-24T11:45:00Z"
+  },
+  {
+    "_id": "ord_221",
+    "table": "33",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Kuzu Şiş",
+        "price": 400,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Şalgam",
+        "price": 35,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 870,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-24T14:10:00Z"
+  },
+  {
+    "_id": "ord_222",
+    "table": "15",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Dana Kaburga",
+        "price": 640,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Fırın Patates",
+        "price": 90,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 730,
+    "paymentMethod": "cash",
+    "isPaid": false,
+    "status": "preparing",
+    "createdAt": "2026-03-24T19:30:00Z"
+  },
+  {
+    "_id": "ord_223",
+    "table": "28",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Tavuklu Wrap",
+        "price": 190,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Kola",
+        "price": 60,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 500,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-25T12:00:00Z"
+  },
+  {
+    "_id": "ord_224",
+    "table": "12",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Somon Füme",
+        "price": 340,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Roze Şarap",
+        "price": 240,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 580,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-25T15:20:00Z"
+  },
+  {
+    "_id": "ord_225",
+    "table": "3",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Karışık Kebap",
+        "price": 680,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Gavurdağı",
+        "price": 100,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Şalgam",
+        "price": 40,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 860,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-25T19:40:00Z"
+  },
+  {
+    "_id": "ord_226",
+    "table": "7",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Tiramisu",
+        "price": 135,
+        "qt": 2,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Latte",
+        "price": 95,
+        "qt": 2,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 460,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-26T10:30:00Z"
+  },
+  {
+    "_id": "ord_227",
+    "table": "20",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sebzeli Risotto",
+        "price": 270,
+        "qt": 2,
+        "category": "Makarna"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 215,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 755,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-26T13:50:00Z"
+  },
+  {
+    "_id": "ord_228",
+    "table": "9",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Fettuccine Alfredo",
+        "price": 255,
+        "qt": 2,
+        "category": "Makarna"
+      },
+      {
+        "name": "Profiterol",
+        "price": 100,
+        "qt": 2,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 710,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "createdAt": "2026-03-26T17:15:00Z"
+  },
+  {
+    "table": "5",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Lahmacun",
+        "price": 90,
+        "qt": 4,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Ayran",
+        "price": 40,
+        "qt": 4,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 520,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_229",
+    "createdAt": "2026-03-22T10:15:00Z"
+  },
+  {
+    "table": "7",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Adana Kebap",
+        "price": 360,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Mercimek Çorbası",
+        "price": 85,
+        "qt": 2,
+        "category": "Çorba"
+      }
+    ],
+    "totalAmount": 890,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_230",
+    "createdAt": "2026-03-22T12:30:00Z"
+  },
+  {
+    "table": "12",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Karışık Pizza",
+        "price": 280,
+        "qt": 1,
+        "category": "Pizza"
+      },
+      {
+        "name": "Kola",
+        "price": 60,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 400,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_231",
+    "createdAt": "2026-03-22T14:45:00Z"
+  },
+  {
+    "table": "3",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Somon Izgara",
+        "price": 520,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 220,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 740,
+    "paymentMethod": "credit_card",
+    "isPaid": false,
+    "status": "preparing",
+    "_id": "ord_232",
+    "createdAt": "2026-03-22T17:00:00Z"
+  },
+  {
+    "table": "9",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Mantı",
+        "price": 200,
+        "qt": 2,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Ayran",
+        "price": 45,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 490,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_233",
+    "createdAt": "2026-03-22T19:20:00Z"
+  },
+  {
+    "table": "8",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Serpme Kahvaltı",
+        "price": 390,
+        "qt": 2,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Portakal Suyu",
+        "price": 95,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 970,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_234",
+    "createdAt": "2026-03-23T09:30:00Z"
+  },
+  {
+    "table": "15",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "T-Bone Steak",
+        "price": 750,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kırmızı Şarap",
+        "price": 250,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 1000,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_235",
+    "createdAt": "2026-03-23T12:00:00Z"
+  },
+  {
+    "table": "22",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Tavuk Şiş",
+        "price": 250,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Bulgur Pilavı",
+        "price": 65,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 565,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_236",
+    "createdAt": "2026-03-23T14:20:00Z"
+  },
+  {
+    "table": "11",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sushi Set",
+        "price": 680,
+        "qt": 1,
+        "category": "Sushi & Uzakdoğu"
+      },
+      {
+        "name": "Sake",
+        "price": 200,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 880,
+    "paymentMethod": "credit_card",
+    "isPaid": false,
+    "status": "preparing",
+    "_id": "ord_237",
+    "createdAt": "2026-03-23T17:40:00Z"
+  },
+  {
+    "table": "4",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Kuzu Tandır",
+        "price": 460,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "İç Pilav",
+        "price": 95,
+        "qt": 2,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 1110,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_238",
+    "createdAt": "2026-03-24T10:00:00Z"
+  },
+  {
+    "table": "17",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Margherita Pizza",
+        "price": 220,
+        "qt": 2,
+        "category": "Pizza"
+      },
+      {
+        "name": "Bira",
+        "price": 145,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 730,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_239",
+    "createdAt": "2026-03-24T13:00:00Z"
+  },
+  {
+    "table": "6",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Levrek Izgara",
+        "price": 480,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Roka Salatası",
+        "price": 90,
+        "qt": 1,
+        "category": "Salata & Mezze"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 220,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 790,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_240",
+    "createdAt": "2026-03-24T15:40:00Z"
+  },
+  {
+    "table": "2",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Cheese Burger",
+        "price": 270,
+        "qt": 3,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Patates Tava",
+        "price": 95,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      }
+    ],
+    "totalAmount": 1000,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_241",
+    "createdAt": "2026-03-24T18:20:00Z"
+  },
+  {
+    "table": "20",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Tiramisu",
+        "price": 135,
+        "qt": 2,
+        "category": "Tatlı"
+      },
+      {
+        "name": "Latte",
+        "price": 95,
+        "qt": 2,
+        "category": "Kahve & Çay"
+      }
+    ],
+    "totalAmount": 460,
+    "paymentMethod": "credit_card",
+    "isPaid": false,
+    "status": "preparing",
+    "_id": "ord_242",
+    "createdAt": "2026-03-24T21:00:00Z"
+  },
+  {
+    "table": "10",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Köy Kahvaltısı",
+        "price": 295,
+        "qt": 2,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Sınırsız Çay",
+        "price": 45,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 680,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_243",
+    "createdAt": "2026-03-25T11:15:00Z"
+  },
+  {
+    "table": "14",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Antrikot",
+        "price": 550,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kırmızı Şarap",
+        "price": 240,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 790,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_244",
+    "createdAt": "2026-03-25T13:30:00Z"
+  },
+  {
+    "table": "33",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Karides Güveç",
+        "price": 360,
+        "qt": 2,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 230,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 950,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_245",
+    "createdAt": "2026-03-25T16:00:00Z"
+  },
+  {
+    "table": "1",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "İskender Kebap",
+        "price": 360,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Ayran",
+        "price": 45,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 810,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_246",
+    "createdAt": "2026-03-26T09:30:00Z"
+  },
+  {
+    "table": "28",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Spagetti Carbonara",
+        "price": 280,
+        "qt": 2,
+        "category": "Makarna"
+      },
+      {
+        "name": "Beyaz Şarap",
+        "price": 210,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 770,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_247",
+    "createdAt": "2026-03-26T12:45:00Z"
+  },
+  {
+    "table": "5",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Kalamar Tava",
+        "price": 340,
+        "qt": 1,
+        "category": "Deniz Ürünleri"
+      },
+      {
+        "name": "Bira",
+        "price": 140,
+        "qt": 2,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 620,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_248",
+    "createdAt": "2026-03-26T16:10:00Z"
+  },
+  {
+    "table": "19",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Bonfile Steak",
+        "price": 600,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Kırmızı Şarap",
+        "price": 220,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 820,
+    "paymentMethod": "credit_card",
+    "isPaid": false,
+    "status": "preparing",
+    "_id": "ord_249",
+    "createdAt": "2026-03-26T19:20:00Z"
+  },
+  {
+    "table": "8",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Ege Kahvaltısı",
+        "price": 340,
+        "qt": 3,
+        "category": "Kahvaltı"
+      },
+      {
+        "name": "Ekstra Bal-Kaymak",
+        "price": 95,
+        "qt": 1,
+        "category": "Kahvaltı"
+      }
+    ],
+    "totalAmount": 1115,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_250",
+    "createdAt": "2026-03-27T10:30:00Z"
+  },
+  {
+    "table": "12",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Double Burger",
+        "price": 330,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      },
+      {
+        "name": "Patates Tava",
+        "price": 95,
+        "qt": 2,
+        "category": "Burger & Fast Food"
+      }
+    ],
+    "totalAmount": 850,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_251",
+    "createdAt": "2026-03-27T13:00:00Z"
+  },
+  {
+    "table": "7",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Sushi Mix",
+        "price": 780,
+        "qt": 1,
+        "category": "Sushi & Uzakdoğu"
+      },
+      {
+        "name": "Sake",
+        "price": 210,
+        "qt": 1,
+        "category": "Alkollü İçecek"
+      }
+    ],
+    "totalAmount": 990,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_252",
+    "createdAt": "2026-03-27T17:15:00Z"
+  },
+  {
+    "table": "16",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Kuzu Şiş",
+        "price": 400,
+        "qt": 2,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Şalgam",
+        "price": 35,
+        "qt": 2,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 870,
+    "paymentMethod": "cash",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_253",
+    "createdAt": "2026-03-28T11:45:00Z"
+  },
+  {
+    "table": "3",
+    "staffId": "g_02",
+    "items": [
+      {
+        "name": "Fettuccine Alfredo",
+        "price": 255,
+        "qt": 2,
+        "category": "Makarna"
+      },
+      {
+        "name": "Profiterol",
+        "price": 100,
+        "qt": 2,
+        "category": "Tatlı"
+      }
+    ],
+    "totalAmount": 710,
+    "paymentMethod": "credit_card",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_254",
+    "createdAt": "2026-03-28T14:10:00Z"
+  },
+  {
+    "table": "24",
+    "staffId": "g_03",
+    "items": [
+      {
+        "name": "Lahmacun",
+        "price": 90,
+        "qt": 4,
+        "category": "Türk Mutfağı"
+      },
+      {
+        "name": "Ayran",
+        "price": 40,
+        "qt": 4,
+        "category": "İçecek"
+      }
+    ],
+    "totalAmount": 520,
+    "paymentMethod": "qr",
+    "isPaid": true,
+    "status": "served",
+    "_id": "ord_255",
+    "createdAt": "2026-03-28T17:15:00Z"
+  },
+  {
+    "table": "31",
+    "staffId": "g_01",
+    "items": [
+      {
+        "name": "Dana Kaburga",
+        "price": 640,
+        "qt": 1,
+        "category": "Ana Yemek"
+      },
+      {
+        "name": "Fırın Patates",
+        "price": 90,
+        "qt": 1,
+        "category": "Garnitür"
+      }
+    ],
+    "totalAmount": 730,
+    "paymentMethod": "cash",
+    "isPaid": false,
+    "status": "preparing",
+    "_id": "ord_256",
+    "createdAt": "2026-03-28T19:30:00Z"
+  }
+]
