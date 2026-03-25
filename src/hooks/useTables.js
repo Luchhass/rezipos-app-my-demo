@@ -82,3 +82,21 @@ export const useResetTable = () => {
     onSuccess: () => qc.invalidateQueries(["tables"]),
   });
 };
+
+// Pay Table
+export const usePayTable = () => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (tableId) => api.post(`/owner/tables/${tableId}/pay`),
+    onSuccess: () => qc.invalidateQueries(["tables"]),
+  });
+};
+
+// Clear Table Orders
+export const useClearTable = () => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (tableId) => api.post(`/owner/tables/${tableId}/clear`),
+    onSuccess: () => qc.invalidateQueries(["tables"]),
+  });
+};
