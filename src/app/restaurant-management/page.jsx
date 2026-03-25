@@ -22,7 +22,9 @@ export default function RestaurantManagementPage() {
   const router = useRouter();
 
   return (
-    <div className="select-none mt-26 md:mt-0 md:ml-70 lg:mr-100 py-6 px-8 md:py-8 lg:py-10 h-[calc(100dvh-105px)] md:h-screen">
+    <div className="select-none mt-26 md:mt-0 md:ml-70 lg:mr-100 py-6 px-8 md:py-8 lg:py-10 h-[calc(100dvh-105px)] md:h-[calc(100dvh-92px)]">
+      <div className="h-14.5 mb-8"></div>
+
       <div className="grid grid-cols-1 grid-rows-2 gap-4 md:gap-6 lg:gap-8 h-full">
         {SECTIONS.map(({ href, label, icon: Icon, color }) => (
           <button

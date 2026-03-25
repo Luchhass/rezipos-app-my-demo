@@ -8,44 +8,62 @@ import GridView from "@/components/sales-history/GridView";
 import ListView from "@/components/sales-history/ListView";
 
 export default function OrdersPage() {
-  // View And Filter State
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
-  const [viewMode, setViewMode] = useState("grid");
+  const [viewMode] = useState(() => {
+    if (typeof window === "undefined") return "grid";
+    const savedViewMode = localStorage.getItem("orders-view-mode");
+    return savedViewMode === "list" ? "list" : "grid";
+  });
   const [activePayment, setActivePayment] = useState("all");
   const [activeOrder, setActiveOrder] = useState("all");
   const [sortBy, setSortBy] = useState("newest");
 
-  // Filtered And Sorted Orders
   const filteredOrders = useMemo(() => {
     let data = [...salesHistory];
-    if (activePayment === "paid") data = data.filter((o) => o.isPaid);
-    if (activePayment === "unpaid") data = data.filter((o) => !o.isPaid);
-    if (activeOrder === "preparing") data = data.filter((o) => o.status?.toLowerCase() === "preparing");
-    if (activeOrder === "served") data = data.filter((o) => o.status?.toLowerCase() === "served");
-    if (sortBy === "highest") data.sort((a, b) => b.totalAmount - a.totalAmount);
-    if (sortBy === "newest") data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    if (sortBy === "oldest") data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+
+    if (activePayment === "paid") {
+      data = data.filter((o) => o.isPaid);
+    }
+
+    if (activePayment === "unpaid") {
+      data = data.filter((o) => !o.isPaid);
+    }
+
+    if (activeOrder === "preparing") {
+      data = data.filter((o) => o.status?.toLowerCase() === "preparing");
+    }
+
+    if (activeOrder === "served") {
+      data = data.filter((o) => o.status?.toLowerCase() === "served");
+    }
+
+    if (sortBy === "highest") {
+      data.sort((a, b) => b.totalAmount - a.totalAmount);
+    }
+
+    if (sortBy === "newest") {
+      data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    }
+
+    if (sortBy === "oldest") {
+      data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    }
+
     return data;
   }, [sortBy, activePayment, activeOrder]);
 
   return (
     <div>
       <div className="flex flex-col gap-8 overflow-y-auto select-none mt-26 md:mt-0 md:ml-70 py-6 px-8 md:py-8 lg:py-10 lg:mr-100">
-        {/* Header */}
-        <div className="flex items-center justify-between gap-3">
-          {/* View Mode Toggle */}
-          <div className="flex overflow-hidden w-28 h-14.5 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d]">
-            <button onClick={() => setViewMode("grid")} className={`flex flex-1 items-center justify-center h-full transition-colors ${viewMode === "grid" ? "bg-[#a5b4fc] text-white" : "text-gray-400"}`}>
-              <Icons.LayoutGrid size={20} />
-            </button>
-            <button onClick={() => setViewMode("list")} className={`flex flex-1 items-center justify-center h-full transition-colors ${viewMode === "list" ? "bg-[#a5b4fc] text-white" : "text-gray-400"}`}>
-              <Icons.List size={20} />
-            </button>
-          </div>
-
-          {/* Mobile Filter Button */}
-          <button onClick={() => setIsOrderModalOpen(!isOrderModalOpen)} className="flex items-center justify-center w-14 h-14.5 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d] lg:hidden">
-            <Icons.SlidersHorizontal size={20} className="text-gray-500 dark:text-gray-400" />
+        <div className="flex items-center justify-end h-14.5">
+          <button
+            onClick={() => setIsOrderModalOpen(!isOrderModalOpen)}
+            className="flex items-center justify-center w-14 h-14.5 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d] lg:hidden"
+          >
+            <Icons.SlidersHorizontal
+              size={20}
+              className="text-gray-500 dark:text-gray-400"
+            />
           </button>
         </div>
 
