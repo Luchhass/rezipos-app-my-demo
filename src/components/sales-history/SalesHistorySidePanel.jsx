@@ -24,35 +24,55 @@ const SORT_OPTIONS = [
   { id: "oldest", label: "Oldest", icon: Icons.ArrowUpAZ, span: false },
 ];
 
-// Summary Stats From Full Dataset
+// Summary Stats
 const totalOrders = salesHistory.length;
-const unpaidOrders = salesHistory.filter((o) => !o.isPaid).length;
-const paidOrders = salesHistory.filter((o) => o.isPaid).length;
-const totalRevenue = salesHistory.filter((o) => o.isPaid).reduce((sum, o) => sum + o.totalAmount, 0);
+const unpaidOrders = salesHistory.filter((order) => !order.isPaid).length;
+const paidOrders = salesHistory.filter((order) => order.isPaid).length;
+const totalRevenue = salesHistory.filter((order) => order.isPaid).reduce((sum, order) => sum + order.totalAmount, 0);
 
-export default function SalesHistorySidePanel({ isOrderModalOpen, setIsOrderModalOpen, activePayment, setActivePayment, activeOrder, setActiveOrder, sortBy, setSortBy }) {
+export default function SalesHistorySidePanel({
+  isOrderModalOpen,
+  setIsOrderModalOpen,
+  activePayment,
+  setActivePayment,
+  activeOrder,
+  setActiveOrder,
+  sortBy,
+  setSortBy,
+}) {
   return (
-    <div className={`fixed top-26.25 right-0 z-30 flex flex-col overflow-y-auto gap-8 w-full h-[calc(100dvh-105px)] py-6 px-8 border-l border-[#dddddd] bg-[#f3f3f3] dark:border-[#2d2d2d] dark:bg-[#111315] md:py-8 lg:top-0 lg:w-100 lg:h-screen lg:translate-x-0 lg:py-10 ${isOrderModalOpen ? "translate-x-0" : "translate-x-full"}`}>
+    <div
+      className={`fixed top-26.25 right-0 z-30 flex h-[calc(100dvh-105px)] w-full flex-col gap-8 overflow-y-auto border-l border-[#dddddd] bg-[#f3f3f3] px-8 py-6 dark:border-[#2d2d2d] dark:bg-[#111315] md:py-8 lg:top-0 lg:h-screen lg:w-100 lg:translate-x-0 lg:py-10 ${
+        isOrderModalOpen ? "translate-x-0" : "translate-x-full"
+      }`}
+    >
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex flex-1 items-center justify-between p-4 rounded-2xl bg-[#a5b4fc]">
-          <h2 className="text-[17.5px] font-bold capitalize text-white">Orders Filters</h2>
+      <div className="flex items-center gap-3">
+        <div className="flex h-14.5 flex-1 items-center rounded-2xl bg-[#a5b4fc] p-4 md:p-5 lg:p-6">
+          <h2 className="text-[17.5px] font-bold text-white">Orders Filters</h2>
         </div>
+
         {/* Mobile Close Button */}
-        <button onClick={() => setIsOrderModalOpen(!isOrderModalOpen)} className="flex items-center justify-center ml-3 w-14 h-14 rounded-2xl bg-white dark:bg-[#2d2d2d] lg:hidden">
+        <button
+          onClick={() => setIsOrderModalOpen(!isOrderModalOpen)}
+          className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white dark:bg-[#2d2d2d] lg:hidden"
+        >
           <Icons.X size={24} className="text-[#121212] dark:text-white" />
         </button>
       </div>
 
-      <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+      {/* Divider */}
+      <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
       {/* Summary Cards */}
       <div>
         <label className="pl-1 text-[10px] font-bold uppercase tracking-[0.15em] text-gray-400">Order Summary</label>
-        <div className="grid grid-cols-2 grid-rows-2 gap-3 w-full">
+
+        <div className="grid w-full grid-cols-2 grid-rows-2 gap-3">
           {/* Total Orders Card */}
-          <div className="flex flex-col justify-between h-38 p-4 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d] text-[#121212] dark:text-[#ffffff] md:p-5 lg:p-6">
+          <div className="flex h-38 flex-col justify-between rounded-2xl bg-[#dddddd] p-4 text-[#121212] dark:bg-[#2d2d2d] dark:text-white md:p-5 lg:p-6">
             <Icons.ClipboardList size={24} className="text-[#495057] dark:text-[#868e96]" />
+
             <div>
               <p className="text-[14px] font-bold leading-tight">Toplam Sipariş</p>
               <h4 className="text-[13px] font-bold opacity-40">{totalOrders} adet</h4>
@@ -60,8 +80,9 @@ export default function SalesHistorySidePanel({ isOrderModalOpen, setIsOrderModa
           </div>
 
           {/* Unpaid Orders Card */}
-          <div className="flex flex-col justify-between h-38 p-4 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d] text-[#121212] dark:text-[#ffffff] md:p-5 lg:p-6">
+          <div className="flex h-38 flex-col justify-between rounded-2xl bg-[#dddddd] p-4 text-[#121212] dark:bg-[#2d2d2d] dark:text-white md:p-5 lg:p-6">
             <Icons.Wallet size={24} className="text-[#495057] dark:text-[#868e96]" />
+
             <div>
               <p className="text-[14px] font-bold leading-tight">Ödenmemiş</p>
               <h4 className="text-[13px] font-bold opacity-40">{unpaidOrders} adet</h4>
@@ -69,14 +90,16 @@ export default function SalesHistorySidePanel({ isOrderModalOpen, setIsOrderModa
           </div>
 
           {/* Total Revenue Card */}
-          <div className="col-span-2 flex flex-col justify-between h-38 w-full p-4 rounded-2xl bg-[#a5b4fc] md:p-5 lg:p-6">
+          <div className="col-span-2 flex h-38 w-full flex-col justify-between rounded-2xl bg-[#a5b4fc] p-4 md:p-5 lg:p-6">
             <Icons.TrendingUp size={24} className="text-white" />
+
             <div className="flex items-end justify-between">
               <div>
                 <p className="text-[14px] font-bold leading-tight text-white">Toplam Gelir</p>
-                <h4 className="text-[13px] font-bold opacity-70 text-white">{paidOrders} onaylanan sipariş</h4>
+                <h4 className="text-[13px] font-bold text-white opacity-70">{paidOrders} onaylanan sipariş</h4>
               </div>
-              <span className="text-[13px] font-bold opacity-70 text-white">
+
+              <span className="text-[13px] font-bold text-white opacity-70">
                 ${totalRevenue.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
@@ -84,14 +107,22 @@ export default function SalesHistorySidePanel({ isOrderModalOpen, setIsOrderModa
         </div>
       </div>
 
-      <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+      {/* Divider */}
+      <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
-      {/* Payment Status Filter */}
+      {/* Payment Status */}
       <div>
-        <h3 className="pl-1 mb-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">Payment Status</h3>
+        <h3 className="mb-1 pl-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">Payment Status</h3>
+
         <div className="grid grid-cols-3 gap-3">
           {PAYMENT_FILTERS.map(({ id, label, icon: Icon, active }) => (
-            <button key={id} onClick={() => setActivePayment(id)} className={`flex flex-col items-center justify-center gap-2 p-4 rounded-2xl text-gray-500 hover:opacity-80 ${activePayment === id ? active : "bg-[#dddddd] dark:bg-[#2d2d2d] text-[#ffffff]"}`}>
+            <button
+              key={id}
+              onClick={() => setActivePayment(id)}
+              className={`flex flex-col items-center justify-center gap-2 rounded-2xl p-4 hover:opacity-80 ${
+                activePayment === id ? active : "bg-[#dddddd] text-gray-500 dark:bg-[#2d2d2d] dark:text-white"
+              }`}
+            >
               <Icon size={20} />
               <span className="text-[10px] uppercase tracking-wider">{label}</span>
             </button>
@@ -99,14 +130,22 @@ export default function SalesHistorySidePanel({ isOrderModalOpen, setIsOrderModa
         </div>
       </div>
 
-      <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+      {/* Divider */}
+      <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
-      {/* Order Status Filter */}
+      {/* Order Status */}
       <div>
-        <h3 className="pl-1 mb-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">Order Status</h3>
+        <h3 className="mb-1 pl-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">Order Status</h3>
+
         <div className="grid grid-cols-3 gap-3">
           {ORDER_FILTERS.map(({ id, label, icon: Icon, active }) => (
-            <button key={id} onClick={() => setActiveOrder(id)} className={`flex flex-col items-center justify-center gap-2 p-4 rounded-2xl text-gray-500 hover:opacity-80 ${activeOrder === id ? active : "bg-[#dddddd] dark:bg-[#2d2d2d]"}`}>
+            <button
+              key={id}
+              onClick={() => setActiveOrder(id)}
+              className={`flex flex-col items-center justify-center gap-2 rounded-2xl p-4 hover:opacity-80 ${
+                activeOrder === id ? active : "bg-[#dddddd] text-gray-500 dark:bg-[#2d2d2d] dark:text-white"
+              }`}
+            >
               <Icon size={20} />
               <span className="text-[10px] uppercase tracking-wider">{label}</span>
             </button>
@@ -114,14 +153,22 @@ export default function SalesHistorySidePanel({ isOrderModalOpen, setIsOrderModa
         </div>
       </div>
 
-      <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+      {/* Divider */}
+      <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
       {/* Sort Options */}
       <div>
-        <h3 className="pl-1 mb-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">Sort By</h3>
+        <h3 className="mb-1 pl-1 text-[10px] font-bold uppercase tracking-widest text-gray-400">Sort By</h3>
+
         <div className="grid grid-cols-2 gap-3">
           {SORT_OPTIONS.map(({ id, label, icon: Icon, span }) => (
-            <button key={id} onClick={() => setSortBy(id)} className={`flex flex-col items-center justify-center gap-2 p-4 rounded-2xl text-gray-500 hover:opacity-80 ${span ? "col-span-2" : ""} ${sortBy === id ? "bg-[#a5b4fc] text-white" : "bg-[#dddddd] dark:bg-[#2d2d2d]"}`}>
+            <button
+              key={id}
+              onClick={() => setSortBy(id)}
+              className={`flex flex-col items-center justify-center gap-2 rounded-2xl p-4 hover:opacity-80 ${
+                span ? "col-span-2" : ""
+              } ${sortBy === id ? "bg-[#a5b4fc] text-white" : "bg-[#dddddd] text-gray-500 dark:bg-[#2d2d2d] dark:text-white"}`}
+            >
               <Icon size={20} />
               <span className="text-[10px] uppercase tracking-wider">{label}</span>
             </button>
@@ -130,7 +177,10 @@ export default function SalesHistorySidePanel({ isOrderModalOpen, setIsOrderModa
       </div>
 
       {/* Mobile Apply Button */}
-      <button onClick={() => setIsOrderModalOpen(!isOrderModalOpen)} className="w-full py-4 rounded-2xl font-black uppercase tracking-wider text-[13px] bg-[#a5b4fc] text-white hover:bg-[#90a3fc] active:scale-[0.98] lg:hidden">
+      <button
+        onClick={() => setIsOrderModalOpen(!isOrderModalOpen)}
+        className="w-full rounded-2xl bg-[#a5b4fc] py-4 text-[13px] font-black uppercase tracking-wider text-white hover:bg-[#90a3fc] active:scale-[0.98] lg:hidden"
+      >
         Apply Filters
       </button>
     </div>

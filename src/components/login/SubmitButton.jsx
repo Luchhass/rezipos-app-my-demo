@@ -2,23 +2,24 @@
 
 import { XCircle } from "lucide-react";
 
-// Submit Button
 export default function SubmitButton({ isPending, buttonError, isLogin }) {
   return (
     <button
       type="submit"
       disabled={isPending}
-      className={`w-full py-4 h-15 rounded-2xl font-bold text-lg transition-all active:scale-[0.98] disabled:opacity-60 mt-2 ${buttonError ? "bg-red-500 text-white" : "text-white hover:opacity-90 bg-[#121212] lg:dark:bg-white lg:dark:text-black"}`}
+      className={`mt-2 h-15 w-full rounded-2xl py-4 text-lg font-bold transition-all active:scale-[0.98] disabled:opacity-60 ${
+        buttonError ? "bg-red-500 text-white" : "bg-[#121212] text-white hover:opacity-90 lg:dark:bg-white lg:dark:text-black"
+      }`}
     >
       {isPending ? (
         <div className="flex items-center justify-center gap-2">
-          <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+          <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
           {isLogin ? "Giriş yapılıyor..." : "Hesap oluşturuluyor..."}
         </div>
       ) : buttonError ? (
         <div className="flex items-center justify-center gap-2">
           <XCircle size={18} />
-          <span className="text-sm truncate">{buttonError}</span>
+          <span className="truncate text-sm">{buttonError}</span>
         </div>
       ) : isLogin ? (
         <span>

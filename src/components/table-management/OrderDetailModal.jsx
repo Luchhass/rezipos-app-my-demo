@@ -5,89 +5,86 @@ import * as Icons from "lucide-react";
 export default function OrderDetailModal({ table, onClose }) {
   if (!table) return null;
 
+  // Order State
   const isOccupied = table.orders && table.orders.length > 0;
 
-  // Toplam Tutar Hesaplama
-  const totalAmount = isOccupied 
-    ? table.orders.reduce((sum, order) => sum + (order.productId?.price * order.quantity || 0), 0)
-    : 0;
-
+  // Total Amount
+  const totalAmount = isOccupied ? table.orders.reduce((sum, order) => sum + (order.productId?.price * order.quantity || 0), 0) : 0;
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-[#f3f4f6] dark:bg-[#1a1a1a] w-full max-w-md rounded-4xl overflow-hidden shadow-2xl">
-        
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="w-full max-w-md overflow-hidden rounded-4xl bg-[#f3f4f6] shadow-2xl dark:bg-[#1a1a1a]">
         {/* Header */}
-        <div className="p-6 flex justify-between items-center bg-[#a5b4fc]">
+        <div className="flex items-center justify-between bg-[#a5b4fc] p-6">
           <div>
-            <h3 className="text-white font-black text-xl tracking-tight">Masa {table.tableNumber}</h3>
-            <p className="text-white/70 text-[10px] font-bold uppercase tracking-[0.2em]">Sipariş Detayları</p>
+            <h3 className="text-xl font-black tracking-tight text-white">Masa {table.tableNumber}</h3>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">Sipariş Detayları</p>
           </div>
-          <button 
-            onClick={onClose} 
-            className="bg-white/20 hover:bg-white/30 p-2 rounded-2xl text-white transition-all active:scale-90"
-          >
+
+          {/* Close Button */}
+          <button onClick={onClose} className="rounded-2xl bg-white/20 p-2 text-white transition-all hover:bg-white/30 active:scale-90">
             <Icons.X size={20} strokeWidth={3} />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 max-h-[50vh] overflow-y-auto custom-scrollbar">
+        <div className="custom-scrollbar max-h-[50vh] overflow-y-auto p-6">
           {isOccupied ? (
             <div className="space-y-3">
-              {table.orders.map((order, idx) => (
-                <div 
-                  key={order._id || idx} 
-                  className="flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-[#2d2d2d] shadow-sm border border-black/5 dark:border-white/5"
+              {table.orders.map((order, index) => (
+                <div
+                  key={order._id || index}
+                  className="flex items-center justify-between rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/5 dark:bg-[#2d2d2d]"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#a5b4fc]/10 flex items-center justify-center text-[#a5b4fc] font-black text-sm">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#a5b4fc]/10 text-sm font-black text-[#a5b4fc]">
                       {order.quantity}x
                     </div>
+
                     <div>
-                      <p className="font-bold text-sm text-gray-800 dark:text-gray-200">
-                        {order.productId?.name || "Bilinmeyen Ürün"}
-                      </p>
-                      <p className="text-[10px] text-gray-400 font-bold uppercase">
+                      <p className="text-sm font-bold text-gray-800 dark:text-gray-200">{order.productId?.name || "Bilinmeyen Ürün"}</p>
+                      <p className="text-[10px] font-bold uppercase text-gray-400">
                         Birim: {order.productId?.price ? `${order.productId.price} TL` : "-"}
                       </p>
                     </div>
                   </div>
-                  <div className="text-right font-black text-sm text-[#a5b4fc]">
+
+                  <div className="text-right text-sm font-black text-[#a5b4fc]">
                     {order.productId?.price ? `${(order.productId.price * order.quantity).toFixed(2)} TL` : ""}
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="text-center py-12 px-6">
-              <div className="bg-[#dddddd] dark:bg-[#2d2d2d] w-16 h-16 rounded-3xl flex items-center justify-center mx-auto mb-4 opacity-50">
-                <Icons.Utensils className="text-gray-400" size={28} />
+            <div className="px-6 py-12 text-center">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-[#dddddd] opacity-50 dark:bg-[#2d2d2d]">
+                <Icons.Utensils size={28} className="text-gray-400" />
               </div>
-              <p className="text-gray-400 font-bold text-sm">Bu masa için aktif sipariş bulunmuyor.</p>
+
+              <p className="text-sm font-bold text-gray-400">Bu masa için aktif sipariş bulunmuyor.</p>
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="p-6 bg-white dark:bg-[#232323] border-t border-black/5 dark:border-white/5">
+        <div className="border-t border-black/5 bg-white p-6 dark:border-white/5 dark:bg-[#232323]">
           {isOccupied && (
-            <div className="flex justify-between items-center mb-6 px-2">
+            <div className="mb-6 flex items-center justify-between px-2">
               <span className="text-xs font-black uppercase tracking-widest text-gray-400">Toplam Tutar</span>
-              <span className="text-2xl font-black text-gray-800 dark:text-white">
-                {totalAmount.toFixed(2)} TL
-              </span>
+              <span className="text-2xl font-black text-gray-800 dark:text-white">{totalAmount.toFixed(2)} TL</span>
             </div>
           )}
-          
+
+          {/* Actions */}
           <div className="flex gap-3">
-            <button 
+            <button
               onClick={onClose}
-              className="flex-1 py-4 bg-[#dddddd] dark:bg-[#2d2d2d] text-gray-500 dark:text-gray-400 rounded-2xl font-bold text-sm transition-all active:scale-95"
+              className="flex-1 rounded-2xl bg-[#dddddd] py-4 text-sm font-bold text-gray-500 transition-all active:scale-95 dark:bg-[#2d2d2d] dark:text-gray-400"
             >
               Kapat
             </button>
+
             {isOccupied && (
-              <button className="flex-2 py-4 bg-[#a5b4fc] text-white rounded-2xl font-bold text-sm shadow-lg shadow-indigo-500/20 transition-all active:scale-95 flex items-center justify-center gap-2">
+              <button className="flex flex-2 items-center justify-center gap-2 rounded-2xl bg-[#a5b4fc] py-4 text-sm font-bold text-white shadow-lg shadow-indigo-500/20 transition-all active:scale-95">
                 <Icons.Receipt size={18} strokeWidth={2.5} />
                 Ödeme Al
               </button>

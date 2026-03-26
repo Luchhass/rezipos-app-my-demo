@@ -4,10 +4,10 @@ import { useMemo } from "react";
 import * as Icons from "lucide-react";
 import { useTables, useDeleteTable } from "@/hooks/useTables";
 
-// Quick Order sabiti
+// Quick Order Area Name
 const QUICK_ORDER_AREA_NAME = "Hızlı Sipariş";
 
-// Helper: normalize orders for comparison
+// Normalize Orders
 const normalizeOrders = (orders = []) => {
   return [...orders]
     .map((order) => ({
@@ -18,18 +18,16 @@ const normalizeOrders = (orders = []) => {
     .sort((a, b) => String(a.productId).localeCompare(String(b.productId)));
 };
 
+// Compare Orders
 const areOrdersEqual = (ordersA = [], ordersB = []) => {
   const a = normalizeOrders(ordersA);
   const b = normalizeOrders(ordersB);
 
   if (a.length !== b.length) return false;
 
-  return a.every((item, index) => {
-    return item.productId === b[index].productId && item.quantity === b[index].quantity;
-  });
+  return a.every((item, index) => item.productId === b[index].productId && item.quantity === b[index].quantity);
 };
 
-// Table Grid
 export default function TableGrid({
   selectedArea,
   statusFilter,
@@ -39,26 +37,23 @@ export default function TableGrid({
   setStep,
   onTableClick,
 }) {
-  // Tables Data
+  // Table Data
   const { data: tables = [], isLoading } = useTables();
   const deleteTable = useDeleteTable();
 
-  // Filtered Tables By Area And Status
+  // Filtered Tables
   const filteredTables = useMemo(
     () =>
-      tables.filter((t) => {
-        // Quick order area'ya ait masaları normal listede gizle
-        const areaName =
-          typeof t.areaId === "object" ? t.areaId?.name : null;
-
+      tables.filter((table) => {
+        const areaName = typeof table.areaId === "object" ? table.areaId?.name : null;
         if (areaName === QUICK_ORDER_AREA_NAME) return false;
 
         const areaMatch = selectedArea
-          ? (typeof t.areaId === "object" ? t.areaId?._id : t.areaId) === selectedArea
+          ? (typeof table.areaId === "object" ? table.areaId?._id : table.areaId) === selectedArea
           : true;
 
-        const hasOrders = (t.orders || []).length > 0;
-        const hasLastSent = (t.lastSentOrders || []).length > 0;
+        const hasOrders = (table.orders || []).length > 0;
+        const hasLastSent = (table.lastSentOrders || []).length > 0;
         const isOccupied = hasOrders || hasLastSent;
 
         const statusMatch =
@@ -75,106 +70,117 @@ export default function TableGrid({
     [tables, selectedArea, statusFilter]
   );
 
-  // Table Click Handler
-  const handleTableClick = (t) => {
-    if (onTableClick) onTableClick(t);
-    if (setSelectedTable) setSelectedTable(t._id);
+  // Handle Table Click
+  const handleTableClick = (table) => {
+    if (onTableClick) onTableClick(table);
+    if (setSelectedTable) setSelectedTable(table._id);
     if (setSelectedProducts) setSelectedProducts([]);
     if (setStep) setStep(1);
   };
 
   return (
-    <div className="grid gap-3 grid-cols-2 md:gap-4 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
       {isLoading ? (
-        [...Array(5)].map((_, i) => (
+        [...Array(5)].map((_, index) => (
           <div
-            key={i}
-            className="relative flex flex-col overflow-hidden min-h-38 p-4 pl-7 rounded-2xl animate-pulse bg-[#dddddd] dark:bg-[#2d2d2d] md:p-5 md:pl-8 lg:p-6 lg:pl-9"
+            key={index}
+            className="relative flex min-h-38 flex-col overflow-hidden rounded-2xl bg-[#dddddd] p-4 pl-7 animate-pulse dark:bg-[#2d2d2d] md:p-5 md:pl-8 lg:p-6 lg:pl-9"
           >
             <div className="absolute top-0 bottom-0 left-0 w-2 bg-[#f4efc4] dark:bg-[#fef3b0]/20" />
-            <div className="w-16 h-2 mb-5 rounded-full bg-black/5 dark:bg-white/5" />
+            <div className="mb-5 h-2 w-16 rounded-full bg-black/5 dark:bg-white/5" />
+
             <div className="mt-2">
-              <div className="w-24 h-4 mb-2 rounded-lg bg-black/5 dark:bg-white/5" />
-              <div className="w-12 h-3 rounded-full bg-black/5 dark:bg-white/5" />
+              <div className="mb-2 h-4 w-24 rounded-lg bg-black/5 dark:bg-white/5" />
+              <div className="h-3 w-12 rounded-full bg-black/5 dark:bg-white/5" />
             </div>
           </div>
         ))
       ) : filteredTables.length > 0 ? (
-        filteredTables.map((t) => {
-          const orders = t.orders || [];
-          const lastSentOrders = t.lastSentOrders || [];
+        filteredTables.map((table) => {
+          const orders = table.orders || [];
+          const lastSentOrders = table.lastSentOrders || [];
 
           const hasOrders = orders.length > 0;
           const hasLastSent = lastSentOrders.length > 0;
           const isSynced = hasOrders && hasLastSent && areOrdersEqual(orders, lastSentOrders);
 
-          // State mapping
-          const isAvailable = !hasOrders && !hasLastSent; // sarı
-          const isSent = isSynced; // yeşil
-          const isCancelled = !hasOrders && hasLastSent; // kırmızı
-          const isDraftOrUpdated = hasOrders && !isSynced; // turuncu
-
-          const cardClass = isCancelled
-            ? "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-200"
-            : isSent
-            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-200"
-            : isDraftOrUpdated
-            ? "bg-amber-100 text-amber-800 dark:bg-amber-900/20 dark:text-amber-200"
-            : "bg-[#dddddd] text-[#121212] dark:bg-[#2d2d2d] dark:text-[#ffffff]";
-
-          const stripeColor = isCancelled
-            ? "#ef4444"
-            : isSent
-            ? "#10b981"
-            : isDraftOrUpdated
-            ? "#f59e0b"
-            : "#fef3b0";
-
-          const label = isCancelled
-            ? "MASA - İPTAL BEKLİYOR"
-            : isSent
-            ? "MASA - GÖNDERİLDİ"
-            : isDraftOrUpdated
-            ? "MASA - GÖNDERİLMEYİ BEKLİYOR"
-            : "MASA - MÜSAİT";
-
-          const description = isCancelled
-            ? "Ürünler silindi, iptal bekliyor"
-            : isSent
-            ? `${orders.length} sipariş gönderildi`
-            : isDraftOrUpdated
-            ? `${orders.length} sipariş bekliyor`
-            : "Sipariş yok";
+          const isAvailable = !hasOrders && !hasLastSent;
+          const isSent = isSynced;
+          const isCancelled = !hasOrders && hasLastSent;
+          const isDraftOrUpdated = hasOrders && !isSynced;
 
           return (
-            <div key={t._id} className="relative cursor-pointer" onClick={() => handleTableClick(t)}>
+            <div key={table._id} onClick={() => handleTableClick(table)} className="relative cursor-pointer">
+              {/* Delete Badge */}
               {activeAction === "delete-table" && (
                 <div
-                  className="absolute -top-3 -right-3 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-red-500 text-white cursor-pointer hover:scale-110"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    deleteTable.mutate(t._id);
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    deleteTable.mutate(table._id);
                   }}
+                  className="absolute -top-3 -right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-red-500 text-white hover:scale-110"
                 >
                   <Icons.Minus size={18} strokeWidth={3} />
                 </div>
               )}
 
-              <div className={`relative flex flex-col overflow-hidden min-h-38 p-4 pl-7 rounded-2xl md:p-5 md:pl-8 lg:p-6 lg:pl-9 ${cardClass}`}>
-                <div className="absolute top-0 bottom-0 left-0 w-2" style={{ backgroundColor: stripeColor }} />
-                <div className="mb-5 text-[8px] font-bold uppercase tracking-widest opacity-30">{label}</div>
+              {/* Table Card */}
+              <div
+                className={`relative flex min-h-38 flex-col overflow-hidden rounded-2xl p-4 pl-7 md:p-5 md:pl-8 lg:p-6 lg:pl-9 ${
+                  isCancelled
+                    ? "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-200"
+                    : isSent
+                    ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-200"
+                    : isDraftOrUpdated
+                    ? "bg-amber-100 text-amber-800 dark:bg-amber-900/20 dark:text-amber-200"
+                    : "bg-[#dddddd] text-[#121212] dark:bg-[#2d2d2d] dark:text-white"
+                }`}
+              >
+                <div
+                  className="absolute top-0 bottom-0 left-0 w-2"
+                  style={{
+                    backgroundColor: isCancelled
+                      ? "#ef4444"
+                      : isSent
+                      ? "#10b981"
+                      : isDraftOrUpdated
+                      ? "#f59e0b"
+                      : "#fef3b0",
+                  }}
+                />
+
+                <div className="mb-5 text-[8px] font-bold uppercase tracking-widest opacity-30">
+                  {isCancelled
+                    ? "Masa - İptal Bekliyor"
+                    : isSent
+                    ? "Masa - Gönderildi"
+                    : isDraftOrUpdated
+                    ? "Masa - Gönderilmeyi Bekliyor"
+                    : "Masa - Müsait"}
+                </div>
+
                 <div>
-                  <h4 className="text-[15px] font-bold leading-tight">Masa {t.tableNumber}</h4>
-                  <p className="mt-1 text-xs font-bold opacity-50">{description}</p>
+                  <h4 className="text-[15px] font-bold leading-tight">Masa {table.tableNumber}</h4>
+                  <p className="mt-1 text-xs font-bold opacity-50">
+                    {isCancelled
+                      ? "Ürünler silindi, iptal bekliyor"
+                      : isSent
+                      ? `${orders.length} sipariş gönderildi`
+                      : isDraftOrUpdated
+                      ? `${orders.length} sipariş bekliyor`
+                      : "Sipariş yok"}
+                  </p>
                 </div>
               </div>
             </div>
           );
         })
       ) : (
-        <div className="relative flex flex-col justify-between overflow-hidden min-h-38 p-4 pl-7 rounded-2xl opacity-50 bg-[#dddddd] text-[#121212] dark:bg-[#2d2d2d] dark:text-[#ffffff] md:p-5 md:pl-8 lg:p-6 lg:pl-9">
+        /* Empty State */
+        <div className="relative flex min-h-38 flex-col justify-between overflow-hidden rounded-2xl bg-[#dddddd] p-4 pl-7 text-[#121212] opacity-50 dark:bg-[#2d2d2d] dark:text-white md:p-5 md:pl-8 lg:p-6 lg:pl-9">
           <div className="absolute top-0 bottom-0 left-0 w-2 bg-black/10 dark:bg-white/10" />
-          <div className="text-[8px] font-bold uppercase tracking-widest opacity-30">SİSTEM</div>
+          <div className="text-[8px] font-bold uppercase tracking-widest opacity-30">Sistem</div>
+
           <div className="mt-2">
             <h4 className="text-[15px] font-bold leading-tight">Masa Bulunamadı</h4>
           </div>

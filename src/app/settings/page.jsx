@@ -6,9 +6,10 @@ import { useLogout } from "@/hooks/useAuth";
 import { useUISettings } from "@/contexts/UISettingsContext";
 
 export default function SettingsPage() {
-  const { theme, setTheme, language, setLanguage, ordersViewMode, setOrdersViewMode } =
-    useUISettings();
+  // UI Settings
+  const { theme, setTheme, language, setLanguage, ordersViewMode, setOrdersViewMode } = useUISettings();
 
+  // Local State
   const [notifications, setNotifications] = useState(true);
   const [autoUpdate, setAutoUpdate] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
@@ -22,27 +23,10 @@ export default function SettingsPage() {
     { id: 3, name: "Can Demir", role: "Mutfak" },
   ]);
 
+  // Auth Action
   const { logout } = useLogout();
 
-  function addMember() {
-    if (!newName.trim()) return;
-
-    setMembers((prev) => [
-      ...prev,
-      { id: Date.now(), name: newName.trim(), role: newRole.trim() || "—" },
-    ]);
-
-    setNewName("");
-    setNewRole("");
-    setIsAddMemberModalOpen(false);
-  }
-
-  function handleLogout() {
-    setIsLogoutModalOpen(false);
-    setIsLoggingOut(true);
-    setTimeout(() => logout(), 3000);
-  }
-
+  // Settings Options
   const THEME_OPTIONS = [
     { id: "light", label: "Açık", icon: Icons.Sun },
     { id: "dark", label: "Koyu", icon: Icons.Moon },
@@ -59,103 +43,47 @@ export default function SettingsPage() {
     { id: "list", label: "List", icon: Icons.List },
   ];
 
+  // Add Team Member
+  function addMember() {
+    if (!newName.trim()) return;
+
+    setMembers((prev) => [...prev, { id: Date.now(), name: newName.trim(), role: newRole.trim() || "—" }]);
+    setNewName("");
+    setNewRole("");
+    setIsAddMemberModalOpen(false);
+  }
+
+  // Handle Logout
+  function handleLogout() {
+    setIsLogoutModalOpen(false);
+    setIsLoggingOut(true);
+    setTimeout(() => logout(), 3000);
+  }
+
   return (
     <>
-      <div className="flex flex-col gap-4 md:gap-6 lg:gap-8 mt-26 md:mt-0 md:ml-70 px-8 py-6 md:px-8 md:py-8 lg:px-8 lg:py-10 select-none lg:max-w-160">
+      {/* Page Content */}
+      <div className="mt-26 flex max-w-160 select-none flex-col gap-4 px-8 py-6 md:mt-0 md:ml-70 md:gap-6 md:py-8 lg:gap-8 lg:py-10">
+        {/* Theme */}
         <section className="flex flex-col gap-5">
           <div>
-            <h2 className="text-[32px] font-black tracking-tighter leading-none text-[#121212] dark:text-white">
-              Tema
-            </h2>
-            <p className="text-[13px] font-medium text-gray-400 dark:text-gray-500 mt-2 leading-relaxed">
-              Uygulamanın görsel renk tonunu belirler. Koyu tema göz
-              yorgunluğunu azaltırken açık tema gün içi kullanıma daha uygundur.
+            <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Tema</h2>
+            <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
+              Uygulamanın görsel renk tonunu belirler. Koyu tema göz yorgunluğunu azaltırken açık tema gün içi kullanıma daha uygundur.
             </p>
           </div>
 
-          <div className="flex h-14 rounded-2xl overflow-hidden bg-[#dddddd] dark:bg-[#2d2d2d]">
-            {THEME_OPTIONS.map((t) => {
-              const Icon = t.icon;
-              const active = theme === t.id;
-
-              return (
-                <button
-                  key={t.id}
-                  onClick={() => setTheme(t.id)}
-                  className={`flex flex-1 items-center justify-center gap-2.5 h-full font-bold text-[13px] transition-all ${
-                    active
-                      ? "bg-[#a5b4fc] text-white"
-                      : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                  }`}
-                >
-                  <Icon size={16} strokeWidth={2.5} />
-                  <span>{t.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
-
-        <section className="flex flex-col gap-5">
-          <div>
-            <h2 className="text-[32px] font-black tracking-tighter leading-none text-[#121212] dark:text-white">
-              Dil
-            </h2>
-            <p className="text-[13px] font-medium text-gray-400 dark:text-gray-500 mt-2 leading-relaxed">
-              Arayüzdeki tüm metinlerin, menülerin ve bildirimlerin hangi dilde
-              gösterileceğini belirler.
-            </p>
-          </div>
-
-          <div className="flex gap-3">
-            {LANG_OPTIONS.map((l) => {
-              const active = language === l.id;
-
-              return (
-                <button
-                  key={l.id}
-                  onClick={() => setLanguage(l.id)}
-                  className={`flex flex-col items-start gap-3 flex-1 px-5 py-4 rounded-2xl font-bold transition-all text-left border-2 ${
-                    active
-                      ? "border-[#a5b4fc] bg-[#a5b4fc]/10 dark:bg-[#a5b4fc]/10 text-[#121212] dark:text-white"
-                      : "border-transparent bg-[#dddddd] dark:bg-[#2d2d2d] text-[#121212] dark:text-white opacity-50 hover:opacity-75"
-                  }`}
-                >
-                  <span className="text-2xl leading-none">{l.flag}</span>
-                  <span className="text-[15px]">{l.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
-
-        <section className="flex flex-col gap-5">
-          <div>
-            <h2 className="text-[32px] font-black tracking-tighter leading-none text-[#121212] dark:text-white">
-              Sipariş Görünümü
-            </h2>
-            <p className="text-[13px] font-medium text-gray-400 dark:text-gray-500 mt-2 leading-relaxed">
-              Sipariş geçmişi ve ilgili kart listelerinin varsayılan görünümünü belirler.
-            </p>
-          </div>
-
-          <div className="flex h-14 rounded-2xl overflow-hidden bg-[#dddddd] dark:bg-[#2d2d2d]">
-            {ORDER_VIEW_OPTIONS.map((option) => {
+          <div className="flex h-14 overflow-hidden rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d]">
+            {THEME_OPTIONS.map((option) => {
               const Icon = option.icon;
-              const active = ordersViewMode === option.id;
+              const active = theme === option.id;
 
               return (
                 <button
                   key={option.id}
-                  onClick={() => setOrdersViewMode(option.id)}
-                  className={`flex flex-1 items-center justify-center gap-2.5 h-full font-bold text-[13px] transition-all ${
-                    active
-                      ? "bg-[#a5b4fc] text-white"
-                      : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  onClick={() => setTheme(option.id)}
+                  className={`flex h-full flex-1 items-center justify-center gap-2.5 text-[13px] font-bold transition-all ${
+                    active ? "bg-[#a5b4fc] text-white" : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
                   }`}
                 >
                   <Icon size={16} strokeWidth={2.5} />
@@ -166,76 +94,132 @@ export default function SettingsPage() {
           </div>
         </section>
 
-        <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+        {/* Divider */}
+        <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
+        {/* Language */}
         <section className="flex flex-col gap-5">
           <div>
-            <h2 className="text-[32px] font-black tracking-tighter leading-none text-[#121212] dark:text-white">
-              Bildirimler
-            </h2>
-            <p className="text-[13px] font-medium text-gray-400 dark:text-gray-500 mt-2 leading-relaxed">
-              Yeni siparişler, mutfak uyarıları ve masa talepleri gibi anlık
-              olaylarda bildirim alıp almayacağınızı yönetir.
+            <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Dil</h2>
+            <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
+              Arayüzdeki tüm metinlerin, menülerin ve bildirimlerin hangi dilde gösterileceğini belirler.
+            </p>
+          </div>
+
+          <div className="flex gap-3">
+            {LANG_OPTIONS.map((option) => {
+              const active = language === option.id;
+
+              return (
+                <button
+                  key={option.id}
+                  onClick={() => setLanguage(option.id)}
+                  className={`flex flex-1 flex-col items-start gap-3 rounded-2xl border-2 px-5 py-4 text-left font-bold transition-all ${
+                    active
+                      ? "border-[#a5b4fc] bg-[#a5b4fc]/10 text-[#121212] dark:bg-[#a5b4fc]/10 dark:text-white"
+                      : "border-transparent bg-[#dddddd] text-[#121212] opacity-50 hover:opacity-75 dark:bg-[#2d2d2d] dark:text-white"
+                  }`}
+                >
+                  <span className="text-2xl leading-none">{option.flag}</span>
+                  <span className="text-[15px]">{option.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Divider */}
+        <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+
+        {/* Order View */}
+        <section className="flex flex-col gap-5">
+          <div>
+            <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Sipariş Görünümü</h2>
+            <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
+              Sipariş geçmişi ve ilgili kart listelerinin varsayılan görünümünü belirler.
+            </p>
+          </div>
+
+          <div className="flex h-14 overflow-hidden rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d]">
+            {ORDER_VIEW_OPTIONS.map((option) => {
+              const Icon = option.icon;
+              const active = ordersViewMode === option.id;
+
+              return (
+                <button
+                  key={option.id}
+                  onClick={() => setOrdersViewMode(option.id)}
+                  className={`flex h-full flex-1 items-center justify-center gap-2.5 text-[13px] font-bold transition-all ${
+                    active ? "bg-[#a5b4fc] text-white" : "text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  }`}
+                >
+                  <Icon size={16} strokeWidth={2.5} />
+                  <span>{option.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Divider */}
+        <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+
+        {/* Notifications */}
+        <section className="flex flex-col gap-5">
+          <div>
+            <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Bildirimler</h2>
+            <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
+              Yeni siparişler, mutfak uyarıları ve masa talepleri gibi anlık olaylarda bildirim alıp almayacağınızı yönetir.
             </p>
           </div>
 
           <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-between px-5 py-4 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d]">
+            <div className="flex items-center justify-between rounded-2xl bg-[#dddddd] px-5 py-4 dark:bg-[#2d2d2d]">
               <div className="flex items-center gap-3">
-                <Icons.Bell
-                  size={18}
-                  className="text-[#121212] dark:text-white opacity-40"
-                />
+                <Icons.Bell size={18} className="text-[#121212] opacity-40 dark:text-white" />
+
                 <div>
-                  <p className="text-[14px] font-bold text-[#121212] dark:text-white leading-none">
-                    Anlık bildirimler
-                  </p>
-                  <p className="text-[11px] font-bold opacity-40 text-[#121212] dark:text-white mt-0.5">
+                  <p className="text-[14px] leading-none font-bold text-[#121212] dark:text-white">Anlık bildirimler</p>
+                  <p className="mt-0.5 text-[11px] font-bold text-[#121212] opacity-40 dark:text-white">
                     {notifications ? "Yeni olaylarda anında haberdar ol" : "Bildirimler sessiz"}
                   </p>
                 </div>
               </div>
 
               <button
-                onClick={() => setNotifications((v) => !v)}
-                className={`relative w-12 h-6 rounded-full transition-colors duration-200 shrink-0 ${
+                onClick={() => setNotifications((value) => !value)}
+                className={`relative h-6 w-12 shrink-0 rounded-full transition-colors duration-200 ${
                   notifications ? "bg-[#a5b4fc]" : "bg-black/10 dark:bg-white/10"
                 }`}
               >
                 <span
-                  className={`absolute top-0.75 w-4.5 h-4.5 rounded-full bg-white transition-all duration-200 shadow-sm ${
+                  className={`absolute top-0.75 h-4.5 w-4.5 rounded-full bg-white shadow-sm transition-all duration-200 ${
                     notifications ? "left-6.5" : "left-0.75"
                   }`}
                 />
               </button>
             </div>
 
-            <div className="flex items-center justify-between px-5 py-4 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d]">
+            <div className="flex items-center justify-between rounded-2xl bg-[#dddddd] px-5 py-4 dark:bg-[#2d2d2d]">
               <div className="flex items-center gap-3">
-                <Icons.RefreshCw
-                  size={18}
-                  className="text-[#121212] dark:text-white opacity-40"
-                />
+                <Icons.RefreshCw size={18} className="text-[#121212] opacity-40 dark:text-white" />
+
                 <div>
-                  <p className="text-[14px] font-bold text-[#121212] dark:text-white leading-none">
-                    Otomatik güncelleme
-                  </p>
-                  <p className="text-[11px] font-bold opacity-40 text-[#121212] dark:text-white mt-0.5">
-                    {autoUpdate
-                      ? "Güncellemeler arka planda indirilir"
-                      : "Güncellemeleri manuel onayla"}
+                  <p className="text-[14px] leading-none font-bold text-[#121212] dark:text-white">Otomatik güncelleme</p>
+                  <p className="mt-0.5 text-[11px] font-bold text-[#121212] opacity-40 dark:text-white">
+                    {autoUpdate ? "Güncellemeler arka planda indirilir" : "Güncellemeleri manuel onayla"}
                   </p>
                 </div>
               </div>
 
               <button
-                onClick={() => setAutoUpdate((v) => !v)}
-                className={`relative w-12 h-6 rounded-full transition-colors duration-200 shrink-0 ${
+                onClick={() => setAutoUpdate((value) => !value)}
+                className={`relative h-6 w-12 shrink-0 rounded-full transition-colors duration-200 ${
                   autoUpdate ? "bg-[#a5b4fc]" : "bg-black/10 dark:bg-white/10"
                 }`}
               >
                 <span
-                  className={`absolute top-0.75 w-4.5 h-4.5 rounded-full bg-white transition-all duration-200 shadow-sm ${
+                  className={`absolute top-0.75 h-4.5 w-4.5 rounded-full bg-white shadow-sm transition-all duration-200 ${
                     autoUpdate ? "left-6.5" : "left-0.75"
                   }`}
                 />
@@ -244,117 +228,105 @@ export default function SettingsPage() {
           </div>
         </section>
 
-        <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+        {/* Divider */}
+        <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
+        {/* Team */}
         <section className="flex flex-col gap-5">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="text-[32px] font-black tracking-tighter leading-none text-[#121212] dark:text-white">
-                Ekip
-              </h2>
-              <p className="text-[13px] font-medium text-gray-400 dark:text-gray-500 mt-2 leading-relaxed">
-                Uygulamaya erişimi olan çalışanları ve rollerini görüntüleyin,
-                yeni üye ekleyin.
+              <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Ekip</h2>
+              <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
+                Uygulamaya erişimi olan çalışanları ve rollerini görüntüleyin, yeni üye ekleyin.
               </p>
             </div>
 
             <button
               onClick={() => setIsAddMemberModalOpen(true)}
-              className="shrink-0 mt-1 flex items-center justify-center w-12 h-12 rounded-2xl border border-[#a5b4fc] text-[#a5b4fc] hover:bg-[#a5b4fc]/10 active:scale-95 transition-all"
+              className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#a5b4fc] text-[#a5b4fc] transition-all hover:bg-[#a5b4fc]/10 active:scale-95"
             >
               <Icons.Plus size={20} strokeWidth={2.5} />
             </button>
           </div>
 
           <div className="flex flex-col gap-3">
-            {members.map((m) => (
-              <div
-                key={m.id}
-                className="flex items-center gap-4 px-5 py-4 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d]"
-              >
-                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#a5b4fc]/20 text-[#a5b4fc] text-[13px] font-black shrink-0">
-                  {m.name
+            {members.map((member) => (
+              <div key={member.id} className="flex items-center gap-4 rounded-2xl bg-[#dddddd] px-5 py-4 dark:bg-[#2d2d2d]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#a5b4fc]/20 text-[13px] font-black text-[#a5b4fc]">
+                  {member.name
                     .split(" ")
-                    .map((w) => w[0])
+                    .map((word) => word[0])
                     .join("")
                     .slice(0, 2)
                     .toUpperCase()}
                 </div>
 
                 <div className="flex-1">
-                  <p className="text-[14px] font-bold text-[#121212] dark:text-white leading-none">
-                    {m.name}
-                  </p>
-                  <p className="text-[11px] font-bold opacity-40 text-[#121212] dark:text-white mt-0.5">
-                    {m.role}
-                  </p>
+                  <p className="text-[14px] leading-none font-bold text-[#121212] dark:text-white">{member.name}</p>
+                  <p className="mt-0.5 text-[11px] font-bold text-[#121212] opacity-40 dark:text-white">{member.role}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        <div className="w-full h-px shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
+        {/* Divider */}
+        <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
+        {/* Session */}
         <section className="flex flex-col gap-5">
           <div>
-            <h2 className="text-[32px] font-black tracking-tighter leading-none text-[#121212] dark:text-white">
-              Oturum
-            </h2>
-            <p className="text-[13px] font-medium text-gray-400 dark:text-gray-500 mt-2 leading-relaxed">
-              Aktif oturumunuzu güvenli şekilde sonlandırır. Tekrar giriş yapana
-              kadar uygulamaya erişilemez.
+            <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Oturum</h2>
+            <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
+              Aktif oturumunuzu güvenli şekilde sonlandırır. Tekrar giriş yapana kadar uygulamaya erişilemez.
             </p>
           </div>
 
           <button
             onClick={() => setIsLogoutModalOpen(true)}
-            className="mr-auto flex items-center justify-center gap-2 p-4 px-8 rounded-2xl bg-red-500/10 text-red-500 hover:bg-red-500/20 active:scale-[0.98] transition-all"
+            className="mr-auto flex items-center justify-center gap-2 rounded-2xl bg-red-500/10 p-4 px-8 text-red-500 transition-all hover:bg-red-500/20 active:scale-[0.98]"
           >
             <Icons.LogOut size={20} />
-            <span className="text-[10px] font-bold uppercase tracking-wider">
-              Çıkış Yap
-            </span>
+            <span className="text-[10px] font-bold uppercase tracking-wider">Çıkış Yap</span>
           </button>
         </section>
       </div>
 
+      {/* Logout Modal */}
       {isLogoutModalOpen && (
         <div
-          className="fixed inset-0 z-100 flex items-center justify-center px-6 bg-black/40 backdrop-blur-sm"
           onClick={() => setIsLogoutModalOpen(false)}
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 px-6 backdrop-blur-sm"
         >
           <div
-            className="overflow-hidden w-full max-w-sm rounded-2xl bg-white dark:bg-[#1a1a1a] animate-in fade-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-sm overflow-hidden rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]"
           >
             <div className="flex flex-col items-center gap-4 p-8 text-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-red-400/20">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-400">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-400/20">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-400">
                   <Icons.LogOut size={22} className="text-white" />
                 </div>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-[#121212] dark:text-white mb-1">
-                  Oturumu Kapat
-                </h3>
-                <p className="text-sm opacity-60 text-[#121212] dark:text-white">
-                  Hesabınızdan çıkış yapılacak. Tekrar giriş yapana kadar
-                  uygulamaya erişilemez.
+                <h3 className="mb-1 text-xl font-bold text-[#121212] dark:text-white">Oturumu Kapat</h3>
+                <p className="text-sm text-[#121212] opacity-60 dark:text-white">
+                  Hesabınızdan çıkış yapılacak. Tekrar giriş yapana kadar uygulamaya erişilemez.
                 </p>
               </div>
 
-              <div className="flex gap-3 w-full">
+              <div className="flex w-full gap-3">
                 <button
                   onClick={() => setIsLogoutModalOpen(false)}
-                  className="flex-1 py-3.5 rounded-2xl font-bold bg-[#dddddd] text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
+                  className="flex-1 rounded-2xl bg-[#dddddd] py-3.5 font-bold text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
                 >
                   İptal
                 </button>
+
                 <button
                   onClick={handleLogout}
-                  className="flex-1 py-3.5 rounded-2xl font-bold bg-red-400 text-white hover:bg-red-500 active:scale-[0.98]"
+                  className="flex-1 rounded-2xl bg-red-400 py-3.5 font-bold text-white hover:bg-red-500 active:scale-[0.98]"
                 >
                   Çıkış Yap
                 </button>
@@ -364,31 +336,25 @@ export default function SettingsPage() {
         </div>
       )}
 
+      {/* Logging Out Modal */}
       {isLoggingOut && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center px-6 bg-black/40 backdrop-blur-sm">
-          <div className="overflow-hidden w-full max-w-sm rounded-2xl bg-white dark:bg-[#1a1a1a] animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 px-6 backdrop-blur-sm">
+          <div className="w-full max-w-sm overflow-hidden rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]">
             <div className="flex flex-col items-center gap-4 p-8 text-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-red-400/20">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-400">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-400/20">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-400">
                   <Icons.LogOut size={22} className="text-white" />
                 </div>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-[#121212] dark:text-white mb-1">
-                  Çıkış yapılıyor
-                </h3>
-                <p className="text-sm opacity-60 text-[#121212] dark:text-white">
-                  Giriş sayfasına yönlendiriliyorsunuz...
-                </p>
+                <h3 className="mb-1 text-xl font-bold text-[#121212] dark:text-white">Çıkış yapılıyor</h3>
+                <p className="text-sm text-[#121212] opacity-60 dark:text-white">Giriş sayfasına yönlendiriliyorsunuz...</p>
               </div>
             </div>
 
             <div className="h-1.5 w-full bg-[#dddddd] dark:bg-[#2d2d2d]">
-              <div
-                className="h-full bg-red-400 origin-left"
-                style={{ animation: "shrink 3s linear forwards" }}
-              />
+              <div className="h-full origin-left bg-red-400" style={{ animation: "shrink 3s linear forwards" }} />
             </div>
 
             <style>{`@keyframes shrink { from { width: 100%; } to { width: 0%; } }`}</style>
@@ -396,54 +362,50 @@ export default function SettingsPage() {
         </div>
       )}
 
+      {/* Add Member Modal */}
       {isAddMemberModalOpen && (
         <div
-          className="fixed inset-0 z-100 flex items-center justify-center px-6 bg-black/40 backdrop-blur-sm"
           onClick={() => setIsAddMemberModalOpen(false)}
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 px-6 backdrop-blur-sm"
         >
           <div
-            className="overflow-hidden w-full max-w-sm rounded-2xl bg-white dark:bg-[#1a1a1a] animate-in fade-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-sm overflow-hidden rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]"
           >
             <div className="flex flex-col gap-4 p-8">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold text-[#121212] dark:text-white">
-                  Yeni Üye
-                </h3>
+                <h3 className="text-xl font-bold text-[#121212] dark:text-white">Yeni Üye</h3>
 
-                <button
-                  onClick={() => setIsAddMemberModalOpen(false)}
-                  className="text-gray-400 hover:text-gray-600"
-                >
+                <button onClick={() => setIsAddMemberModalOpen(false)} className="text-gray-400 hover:text-gray-600">
                   <Icons.X size={20} />
                 </button>
               </div>
 
               <input
                 value={newName}
-                onChange={(e) => setNewName(e.target.value)}
+                onChange={(event) => setNewName(event.target.value)}
                 placeholder="İsim soyisim"
-                className="w-full h-12 px-4 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d] text-[#121212] dark:text-white outline-none text-[14px] font-bold placeholder:opacity-40"
+                className="h-12 w-full rounded-2xl bg-[#dddddd] px-4 text-[14px] font-bold text-[#121212] outline-none placeholder:opacity-40 dark:bg-[#2d2d2d] dark:text-white"
               />
 
               <input
                 value={newRole}
-                onChange={(e) => setNewRole(e.target.value)}
+                onChange={(event) => setNewRole(event.target.value)}
                 placeholder="Görev (ör. Servis, Mutfak)"
-                className="w-full h-12 px-4 rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d] text-[#121212] dark:text-white outline-none text-[14px] font-bold placeholder:opacity-40"
+                className="h-12 w-full rounded-2xl bg-[#dddddd] px-4 text-[14px] font-bold text-[#121212] outline-none placeholder:opacity-40 dark:bg-[#2d2d2d] dark:text-white"
               />
 
-              <div className="flex gap-3 mt-2">
+              <div className="mt-2 flex gap-3">
                 <button
                   onClick={() => setIsAddMemberModalOpen(false)}
-                  className="flex-1 py-3.5 rounded-2xl font-bold bg-[#dddddd] text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
+                  className="flex-1 rounded-2xl bg-[#dddddd] py-3.5 font-bold text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
                 >
                   İptal
                 </button>
 
                 <button
                   onClick={addMember}
-                  className="flex-1 py-3.5 rounded-2xl font-bold bg-[#a5b4fc] text-white hover:opacity-90 active:scale-[0.98]"
+                  className="flex-1 rounded-2xl bg-[#a5b4fc] py-3.5 font-bold text-white hover:opacity-90 active:scale-[0.98]"
                 >
                   Kaydet
                 </button>

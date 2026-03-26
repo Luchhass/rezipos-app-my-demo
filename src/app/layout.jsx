@@ -8,10 +8,7 @@ import "./globals.css";
 
 // Font Definitions
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 // Page Metadata
 export const metadata = {
@@ -20,16 +17,18 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+  // Cookie Store
   const cookieStore = await cookies();
 
+  // Initial UI Settings
   const initialTheme = cookieStore.get("app-theme")?.value || "system";
   const initialLanguage = cookieStore.get("app-language")?.value || "tr";
-  const initialOrdersViewMode =
-    cookieStore.get("orders-view-mode")?.value || "grid";
+  const initialOrdersViewMode = cookieStore.get("orders-view-mode")?.value || "grid";
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Theme Script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var s=document.cookie.match(/(?:^|; )app-theme=([^;]+)/);s=s?decodeURIComponent(s[1]):'system';if(s==='dark'||(s==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');})();`,
@@ -37,9 +36,7 @@ export default async function RootLayout({ children }) {
         />
       </head>
 
-      <body
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased min-h-screen`}
-      >
+      <body className={`${inter.variable} ${geistMono.variable} min-h-screen font-sans antialiased`}>
         <TanstackProvider>
           <UISettingsProvider
             initialTheme={initialTheme}
@@ -48,9 +45,9 @@ export default async function RootLayout({ children }) {
           >
             <GlobalUI />
             <Header />
-            <div className="flex flex-col flex-1 min-h-screen bg-[#f3f3f3] dark:bg-[#111315]">
-              {children}
-            </div>
+
+            {/* Page Content */}
+            <div className="flex min-h-screen flex-1 flex-col bg-[#f3f3f3] dark:bg-[#111315]">{children}</div>
           </UISettingsProvider>
         </TanstackProvider>
       </body>

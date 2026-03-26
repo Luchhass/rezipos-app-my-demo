@@ -6,16 +6,7 @@ import { useCategories, useDeleteCategory } from "@/hooks/useCategories";
 import { useUISettings } from "@/contexts/UISettingsContext";
 
 // Pastel Color Palette
-const COLOR_PALETTE = [
-  "#d4f0d4",
-  "#d4d4f0",
-  "#f0d4f0",
-  "#d4eaf0",
-  "#f0e6d4",
-  "#f0d4eb",
-  "#e8f0d4",
-  "#f0d4d4",
-];
+const COLOR_PALETTE = ["#d4f0d4", "#d4d4f0", "#f0d4f0", "#d4eaf0", "#f0e6d4", "#f0d4eb", "#e8f0d4", "#f0d4d4"];
 
 export default function CategorySlider({
   selectedCategory,
@@ -24,115 +15,105 @@ export default function CategorySlider({
   setEditingCategory,
   setIsMenuModalOpen,
 }) {
+  // Category Data
   const { data: categories = [], isLoading } = useCategories();
   const deleteCategory = useDeleteCategory();
   const { ordersViewMode } = useUISettings();
 
+  // Delete Modal State
   const [confirmingCategory, setConfirmingCategory] = useState(null);
 
+  // Drag Scroll Refs
   const sliderRef = useRef(null);
-  const isDown = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
+  const isDragging = useRef(false);
+  const dragStart = useRef({ x: 0, scrollLeft: 0 });
 
-  const handleMouseDown = (e) => {
-    isDown.current = true;
-    startX.current = e.pageX - sliderRef.current.offsetLeft;
-    scrollLeft.current = sliderRef.current.scrollLeft;
+  // Drag Handlers
+  const handleMouseDown = (event) => {
+    isDragging.current = true;
+    dragStart.current = {
+      x: event.pageX - sliderRef.current.offsetLeft,
+      scrollLeft: sliderRef.current.scrollLeft,
+    };
   };
 
-  const handleMouseMove = (e) => {
-    if (!isDown.current) return;
-    e.preventDefault();
+  const handleMouseMove = (event) => {
+    if (!isDragging.current) return;
+    event.preventDefault();
     sliderRef.current.scrollLeft =
-      scrollLeft.current -
-      (e.pageX - sliderRef.current.offsetLeft - startX.current);
+      dragStart.current.scrollLeft - (event.pageX - sliderRef.current.offsetLeft - dragStart.current.x);
   };
 
   const stopDragging = () => {
-    isDown.current = false;
+    isDragging.current = false;
   };
 
+  // Category Colors
   const categoryColorMap = useMemo(() => {
-    const map = {};
-    categories.forEach((cat, i) => {
-      map[cat._id] = COLOR_PALETTE[i % COLOR_PALETTE.length];
+    const colorMap = {};
+    categories.forEach((category, index) => {
+      colorMap[category._id] = COLOR_PALETTE[index % COLOR_PALETTE.length];
     });
-    return map;
+    return colorMap;
   }, [categories]);
 
+  // View Mode
   const isListMode = ordersViewMode === "list";
 
-  const wrapperClassName = isListMode
-    ? "grid grid-rows-2 grid-flow-col auto-cols-max gap-3 overflow-x-auto -my-4 py-4 cursor-grab active:cursor-grabbing"
-    : "flex flex-nowrap gap-4 overflow-x-auto -my-4 py-4 cursor-grab active:cursor-grabbing";
-
-  const baseCardClassName = isListMode
-    ? "flex flex-col justify-center w-40 h-15 px-4 py-3 rounded-2xl shrink-0 outline-none text-[#121212] md:w-44 md:h-16 lg:w-48 lg:h-17"
-    : "flex flex-col justify-between w-40 h-32.5 p-4 rounded-2xl shrink-0 outline-none text-[#121212] md:w-42.5 md:h-34 md:p-5 lg:w-45 lg:h-38 lg:p-6";
-
-  const allCardClassName = isListMode
-    ? "flex flex-col justify-center w-40 h-15 px-4 py-3 rounded-2xl shrink-0 outline-none bg-[#dddddd] dark:bg-[#2d2d2d] text-[#121212] dark:text-[#ffffff] md:w-44 md:h-16 lg:w-48 lg:h-17"
-    : "flex flex-col justify-between w-40 h-32.5 p-4 rounded-2xl shrink-0 outline-none bg-[#dddddd] dark:bg-[#2d2d2d] text-[#121212] dark:text-[#ffffff] md:w-42.5 md:h-34 md:p-5 lg:w-45 lg:h-38 lg:p-6";
-
-  const skeletonCardClassName = isListMode
-    ? "flex flex-col justify-center w-40 h-15 px-4 py-3 rounded-2xl shrink-0 animate-pulse md:w-44 md:h-16 lg:w-48 lg:h-17"
-    : "flex flex-col justify-between w-40 h-32.5 p-4 rounded-2xl shrink-0 animate-pulse md:w-42.5 md:h-34 md:p-5 lg:w-45 lg:h-38 lg:p-6";
-
-  const emptyCardClassName = isListMode
-    ? "flex flex-col justify-center w-40 h-15 px-4 py-3 rounded-2xl shrink-0 opacity-50 bg-[#dddddd] text-[#121212] dark:bg-[#2d2d2d] dark:text-[#ffffff] md:w-44 md:h-16 lg:w-48 lg:h-17"
-    : "flex flex-col justify-between w-40 h-32.5 p-4 rounded-2xl shrink-0 opacity-50 bg-[#dddddd] text-[#121212] dark:bg-[#2d2d2d] dark:text-[#ffffff] md:w-42.5 md:h-34 md:p-5 lg:w-45 lg:h-38 lg:p-6";
-
-  const titleClassName = isListMode
-    ? "text-[13px] font-bold leading-tight truncate"
-    : "text-[14px] font-bold leading-tight";
-
-  const subtitleClassName = isListMode
-    ? "text-[10px] font-bold opacity-40 leading-none mt-1"
-    : "text-[10px] font-bold opacity-40";
-
-  const renderSkeletonContent = () => {
-    if (isListMode) {
-      return (
-        <div className="text-left w-full">
-          <div className="w-24 h-4 rounded-lg bg-black/10 dark:bg-white/10" />
-          <div className="w-14 h-3 mt-2 rounded-full bg-black/10 dark:bg-white/10" />
-        </div>
-      );
-    }
-
-    return (
+  // Skeleton Content
+  const renderSkeletonContent = () =>
+    isListMode ? (
+      <div className="w-full text-left">
+        <div className="h-4 w-24 rounded-lg bg-black/10 dark:bg-white/10" />
+        <div className="mt-2 h-3 w-14 rounded-full bg-black/10 dark:bg-white/10" />
+      </div>
+    ) : (
       <>
         <span />
         <div className="text-left">
-          <div className="w-20 h-4 mb-2 rounded-lg bg-black/10 dark:bg-white/10" />
-          <div className="w-12 h-3 rounded-full bg-black/10 dark:bg-white/10" />
+          <div className="mb-2 h-4 w-20 rounded-lg bg-black/10 dark:bg-white/10" />
+          <div className="h-3 w-12 rounded-full bg-black/10 dark:bg-white/10" />
         </div>
       </>
     );
-  };
 
   return (
     <>
+      {/* Category Slider */}
       <div
         ref={sliderRef}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={stopDragging}
         onMouseLeave={stopDragging}
-        className={wrapperClassName}
+        className={
+          isListMode
+            ? "grid auto-cols-max grid-flow-col grid-rows-2 gap-4 overflow-x-auto cursor-grab active:cursor-grabbing"
+            : "flex flex-nowrap gap-4 overflow-x-auto cursor-grab active:cursor-grabbing"
+        }
       >
         {isLoading ? (
           <>
-            <div className={`${skeletonCardClassName} bg-[#dddddd] dark:bg-[#2d2d2d]`}>
+            {/* All Categories Skeleton */}
+            <div
+              className={`shrink-0 animate-pulse rounded-2xl bg-[#dddddd] dark:bg-[#2d2d2d] ${
+                isListMode
+                  ? "flex h-15 w-40 flex-col justify-center px-4 py-3 md:h-16 md:w-44 lg:h-17 lg:w-48"
+                  : "flex h-32.5 w-40 flex-col justify-between p-4 md:h-34 md:w-42.5 md:p-5 lg:h-38 lg:w-45 lg:p-6"
+              }`}
+            >
               {renderSkeletonContent()}
             </div>
 
-            {[...Array(isListMode ? 11 : 9)].map((_, i) => (
+            {[...Array(isListMode ? 11 : 9)].map((_, index) => (
               <div
-                key={i}
-                style={{ backgroundColor: COLOR_PALETTE[i % COLOR_PALETTE.length] }}
-                className={skeletonCardClassName}
+                key={index}
+                style={{ backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] }}
+                className={`shrink-0 animate-pulse rounded-2xl ${
+                  isListMode
+                    ? "flex h-15 w-40 flex-col justify-center px-4 py-3 md:h-16 md:w-44 lg:h-17 lg:w-48"
+                    : "flex h-32.5 w-40 flex-col justify-between p-4 md:h-34 md:w-42.5 md:p-5 lg:h-38 lg:w-45 lg:p-6"
+                }`}
               >
                 {renderSkeletonContent()}
               </div>
@@ -140,73 +121,85 @@ export default function CategorySlider({
           </>
         ) : categories.length > 0 ? (
           <>
+            {/* All Categories Button */}
             <button
               onClick={() => setSelectedCategory(null)}
-              className={allCardClassName}
+              className={
+                isListMode
+                  ? "flex h-15 w-40 shrink-0 flex-col justify-center rounded-2xl bg-[#dddddd] px-4 py-3 text-[#121212] outline-none dark:bg-[#2d2d2d] dark:text-white md:h-16 md:w-44 lg:h-17 lg:w-48"
+                  : "flex h-32.5 w-40 shrink-0 flex-col justify-between rounded-2xl bg-[#dddddd] p-4 text-[#121212] outline-none dark:bg-[#2d2d2d] dark:text-white md:h-34 md:w-42.5 md:p-5 lg:h-38 lg:w-45 lg:p-6"
+              }
             >
               {isListMode ? (
-                <div className="text-left w-full">
-                  <h3 className={titleClassName}>Tümü</h3>
-                  <p className={subtitleClassName}>Tüm ürünler</p>
+                <div className="w-full text-left">
+                  <h3 className="truncate text-[13px] font-bold leading-tight">Tümü</h3>
+                  <p className="mt-1 text-[10px] leading-none font-bold opacity-40">Tüm ürünler</p>
                 </div>
               ) : (
                 <>
                   <span />
                   <div className="text-left">
-                    <h3 className={titleClassName}>Tümü</h3>
-                    <p className={subtitleClassName}>Tüm ürünler</p>
+                    <h3 className="text-[14px] font-bold leading-tight">Tümü</h3>
+                    <p className="text-[10px] font-bold opacity-40">Tüm ürünler</p>
                   </div>
                 </>
               )}
             </button>
 
-            {categories.map((cat) => (
-              <div key={cat._id} className="relative shrink-0">
+            {/* Category Cards */}
+            {categories.map((category) => (
+              <div key={category._id} className="relative shrink-0">
+                {/* Delete Badge */}
                 {activeAction === "delete-category" && (
                   <div
-                    className={`absolute z-10 flex items-center justify-center rounded-full bg-red-500 text-white cursor-pointer hover:scale-110 ${
-                      isListMode ? "-top-2 -right-2 w-6 h-6" : "-top-3 -right-3 w-8 h-8"
-                    }`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setConfirmingCategory(cat);
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setConfirmingCategory(category);
                     }}
+                    className={`absolute z-10 flex cursor-pointer items-center justify-center rounded-full bg-red-500 text-white hover:scale-110 ${
+                      isListMode ? "-top-2 -right-2 h-6 w-6" : "-top-3 -right-3 h-8 w-8"
+                    }`}
                   >
                     <Icons.Minus size={isListMode ? 14 : 18} strokeWidth={3} />
                   </div>
                 )}
 
+                {/* Edit Badge */}
                 {activeAction === "edit-category" && (
                   <div
-                    className={`absolute z-10 flex items-center justify-center rounded-full bg-blue-500 text-white cursor-pointer hover:scale-110 ${
-                      isListMode ? "-top-2 -right-2 w-6 h-6" : "-top-3 -right-3 w-8 h-8"
-                    }`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setEditingCategory?.(cat);
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setEditingCategory?.(category);
                       setIsMenuModalOpen?.(true);
                     }}
+                    className={`absolute z-10 flex cursor-pointer items-center justify-center rounded-full bg-blue-500 text-white hover:scale-110 ${
+                      isListMode ? "-top-2 -right-2 h-6 w-6" : "-top-3 -right-3 h-8 w-8"
+                    }`}
                   >
                     <Icons.Pencil size={isListMode ? 12 : 16} />
                   </div>
                 )}
 
                 <button
-                  onClick={() => setSelectedCategory(cat._id)}
-                  style={{ backgroundColor: categoryColorMap[cat._id] }}
-                  className={baseCardClassName}
+                  onClick={() => setSelectedCategory(category._id)}
+                  style={{ backgroundColor: categoryColorMap[category._id] }}
+                  className={
+                    isListMode
+                      ? "flex h-15 w-40 shrink-0 flex-col justify-center rounded-2xl px-4 py-3 text-[#121212] outline-none md:h-16 md:w-44 lg:h-17 lg:w-48"
+                      : "flex h-32.5 w-40 shrink-0 flex-col justify-between rounded-2xl p-4 text-[#121212] outline-none md:h-34 md:w-42.5 md:p-5 lg:h-38 lg:w-45 lg:p-6"
+                  }
                 >
                   {isListMode ? (
-                    <div className="text-left w-full">
-                      <h3 className={titleClassName}>{cat.name}</h3>
-                      <p className={subtitleClassName}>{cat.productCount} items</p>
+                    <div className="w-full text-left">
+                      <h3 className="truncate text-[13px] font-bold leading-tight">{category.name}</h3>
+                      <p className="mt-1 text-[10px] leading-none font-bold opacity-40">{category.productCount} items</p>
                     </div>
                   ) : (
                     <>
                       <span />
                       <div className="text-left">
-                        <h3 className={titleClassName}>{cat.name}</h3>
-                        <p className={subtitleClassName}>{cat.productCount} items</p>
+                        <h3 className="text-[14px] font-bold leading-tight">{category.name}</h3>
+                        <p className="text-[10px] font-bold opacity-40">{category.productCount} items</p>
                       </div>
                     </>
                   )}
@@ -216,18 +209,25 @@ export default function CategorySlider({
           </>
         ) : (
           <>
-            <div className={emptyCardClassName}>
+            {/* Empty State */}
+            <div
+              className={
+                isListMode
+                  ? "flex h-15 w-40 shrink-0 flex-col justify-center rounded-2xl bg-[#dddddd] px-4 py-3 text-[#121212] opacity-50 dark:bg-[#2d2d2d] dark:text-white md:h-16 md:w-44 lg:h-17 lg:w-48"
+                  : "flex h-32.5 w-40 shrink-0 flex-col justify-between rounded-2xl bg-[#dddddd] p-4 text-[#121212] opacity-50 dark:bg-[#2d2d2d] dark:text-white md:h-34 md:w-42.5 md:p-5 lg:h-38 lg:w-45 lg:p-6"
+              }
+            >
               {isListMode ? (
-                <div className="text-left w-full">
-                  <h3 className={titleClassName}>Kategori Yok</h3>
-                  <p className={subtitleClassName}>Henüz eklenmemiş</p>
+                <div className="w-full text-left">
+                  <h3 className="truncate text-[13px] font-bold leading-tight">Kategori Yok</h3>
+                  <p className="mt-1 text-[10px] leading-none font-bold opacity-40">Henüz eklenmemiş</p>
                 </div>
               ) : (
                 <>
                   <span />
                   <div className="text-left">
-                    <h3 className={titleClassName}>Kategori Yok</h3>
-                    <p className={subtitleClassName}>Henüz eklenmemiş</p>
+                    <h3 className="text-[14px] font-bold leading-tight">Kategori Yok</h3>
+                    <p className="text-[10px] font-bold opacity-40">Henüz eklenmemiş</p>
                   </div>
                 </>
               )}
@@ -235,16 +235,17 @@ export default function CategorySlider({
 
             {isListMode && (
               <>
-                <div className={emptyCardClassName}>
-                  <div className="text-left w-full">
-                    <h3 className={titleClassName}>—</h3>
-                    <p className={subtitleClassName}>Boş alan</p>
+                <div className="flex h-15 w-40 shrink-0 flex-col justify-center rounded-2xl bg-[#dddddd] px-4 py-3 text-[#121212] opacity-50 dark:bg-[#2d2d2d] dark:text-white md:h-16 md:w-44 lg:h-17 lg:w-48">
+                  <div className="w-full text-left">
+                    <h3 className="truncate text-[13px] font-bold leading-tight">—</h3>
+                    <p className="mt-1 text-[10px] leading-none font-bold opacity-40">Boş alan</p>
                   </div>
                 </div>
-                <div className={emptyCardClassName}>
-                  <div className="text-left w-full">
-                    <h3 className={titleClassName}>—</h3>
-                    <p className={subtitleClassName}>Boş alan</p>
+
+                <div className="flex h-15 w-40 shrink-0 flex-col justify-center rounded-2xl bg-[#dddddd] px-4 py-3 text-[#121212] opacity-50 dark:bg-[#2d2d2d] dark:text-white md:h-16 md:w-44 lg:h-17 lg:w-48">
+                  <div className="w-full text-left">
+                    <h3 className="truncate text-[13px] font-bold leading-tight">—</h3>
+                    <p className="mt-1 text-[10px] leading-none font-bold opacity-40">Boş alan</p>
                   </div>
                 </div>
               </>
@@ -253,44 +254,44 @@ export default function CategorySlider({
         )}
       </div>
 
+      {/* Delete Confirmation Modal */}
       {confirmingCategory && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center px-6 bg-black/40 backdrop-blur-sm"
-          onClick={() => setConfirmingCategory(null)}
-        >
+        <div onClick={() => setConfirmingCategory(null)} className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6 backdrop-blur-sm">
           <div
-            className="overflow-hidden w-full max-w-sm rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-sm overflow-hidden rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]"
           >
             <div className="flex flex-col items-center gap-4 p-8 text-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-yellow-400/20">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-yellow-400">
+              {/* Warning Icon */}
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-400/20">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-400">
                   <Icons.Trash2 size={22} className="text-white" />
                 </div>
               </div>
 
+              {/* Modal Text */}
               <div>
-                <h3 className="text-xl font-bold text-[#121212] dark:text-white mb-1">
-                  Delete "{confirmingCategory.name}"?
-                </h3>
-                <p className="text-sm opacity-60 text-[#121212] dark:text-white">
+                <h3 className="mb-1 text-xl font-bold text-[#121212] dark:text-white">Delete "{confirmingCategory.name}"?</h3>
+                <p className="text-sm text-[#121212] opacity-60 dark:text-white">
                   This will permanently delete the category and all products under it. This action cannot be undone.
                 </p>
               </div>
 
-              <div className="flex gap-3 w-full">
+              {/* Modal Actions */}
+              <div className="flex w-full gap-3">
                 <button
                   onClick={() => setConfirmingCategory(null)}
-                  className="flex-1 py-3.5 rounded-2xl font-bold bg-[#dddddd] text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
+                  className="flex-1 rounded-2xl bg-[#dddddd] py-3.5 font-bold text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
                 >
                   Cancel
                 </button>
+
                 <button
                   onClick={() => {
                     deleteCategory.mutate(confirmingCategory._id);
                     setConfirmingCategory(null);
                   }}
-                  className="flex-1 py-3.5 rounded-2xl font-bold bg-yellow-400 text-white hover:bg-yellow-500 active:scale-[0.98]"
+                  className="flex-1 rounded-2xl bg-yellow-400 py-3.5 font-bold text-white hover:bg-yellow-500 active:scale-[0.98]"
                 >
                   Yes, Delete
                 </button>
