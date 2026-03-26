@@ -31,9 +31,7 @@ const normalizeOrders = (orders = []) => {
       quantity: order.quantity,
     }))
     .filter((item) => item.productId)
-    .sort((a, b) =>
-      String(a.productId).localeCompare(String(b.productId))
-    );
+    .sort((a, b) => String(a.productId).localeCompare(String(b.productId)));
 };
 
 // Compare two order arrays deeply
@@ -59,6 +57,7 @@ export default function TakeOrderSidePanel({
   setStep,
   isTakeOrderModalOpen,
   setIsTakeOrderModalOpen,
+  isQuickOrder = false,
 }) {
   // ================================
   // TABLE ORDER MUTATIONS
@@ -77,7 +76,7 @@ export default function TakeOrderSidePanel({
   const [activeMethod, setActiveMethod] = useState("cash");
 
   // Success modal state
-  // "send" | "update" | "delete" | "pay" | null
+  // "send" | "update" | "delete" | "pay" | "quick-pay" | null
   const [successModal, setSuccessModal] = useState(null);
 
   // ================================
@@ -128,12 +127,20 @@ export default function TakeOrderSidePanel({
 
   // ================================
   // PRIMARY BUTTON LABEL
+  // NORMAL MASA:
   // Kırmızı  -> Siparişi Sil
   // Yeşil    -> Ödeme Al
   // Turuncu  -> Siparişi Gönder
+  //
+  // QUICK ORDER:
+  // Ürün varsa -> Siparişi Gönder ve Ödeme Al
   // ================================
   const primaryButtonLabel = isPending
     ? "İşleniyor..."
+    : isQuickOrder
+    ? hasOrders
+      ? "Siparişi Gönder ve Ödeme Al"
+      : "Sipariş Yok"
     : isCancelledState
     ? "Siparişi Sil"
     : isSentSynced
@@ -146,7 +153,9 @@ export default function TakeOrderSidePanel({
   // PRIMARY BUTTON COLOR
   // Pastel tonlar
   // ================================
-  const primaryButtonClass = isCancelledState
+  const primaryButtonClass = isQuickOrder
+    ? "bg-amber-100 text-amber-700 hover:bg-amber-200 dark:bg-amber-900/20 dark:text-amber-200 dark:hover:bg-amber-900/30"
+    : isCancelledState
     ? "bg-red-100 text-red-700 hover:bg-red-200 dark:bg-red-900/20 dark:text-red-200 dark:hover:bg-red-900/30"
     : isSentSynced
     ? "bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/20 dark:text-green-200 dark:hover:bg-green-900/30"
@@ -232,14 +241,33 @@ export default function TakeOrderSidePanel({
 
   // ================================
   // MAIN ACTION BUTTON
+  //
+  // NORMAL MASA:
   // Kırmızı  -> reset + delete modal
   // Yeşil    -> pay + pay modal
   // Turuncu  -> send + send/update modal
+  //
+  // QUICK ORDER:
+  // Tek buton -> send + pay + quick-pay modal
   // ================================
   const handleMainAction = async () => {
     if (!selectedTable?._id) return;
 
     try {
+      // QUICK ORDER FLOW
+      if (isQuickOrder) {
+        if (!hasOrders) return;
+
+        await sendOrder.mutateAsync(selectedTable._id);
+        await payTable.mutateAsync(selectedTable._id);
+
+        setSuccessModal("quick-pay");
+        setIsTakeOrderModalOpen(false);
+        setStep(0);
+        return;
+      }
+
+      // NORMAL TABLE FLOW
       if (isCancelledState) {
         await resetTable.mutateAsync(selectedTable._id);
         setSuccessModal("delete");
@@ -389,6 +417,34 @@ export default function TakeOrderSidePanel({
         </div>
       )}
 
+      {/* Success Quick Pay Modal */}
+      {successModal === "quick-pay" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-6 bg-black/40 backdrop-blur-sm">
+          <div className="overflow-hidden w-full max-w-sm rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]">
+            <div className="flex flex-col items-center gap-4 p-8 text-center">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/20">
+                <CheckCircle2 size={24} className="text-amber-700 dark:text-amber-200" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-[#121212] dark:text-white mb-1">
+                  Hızlı sipariş tamamlandı!
+                </h3>
+                <p className="text-sm opacity-60 text-[#121212] dark:text-white">
+                  Sipariş gönderildi ve ödeme alındı.
+                </p>
+              </div>
+            </div>
+            <div className="h-1.5 w-full bg-[#dddddd] dark:bg-[#2d2d2d]">
+              <div
+                className="h-full bg-amber-100 dark:bg-amber-900/20 origin-left"
+                style={{ animation: "shrink 2s linear forwards" }}
+              />
+            </div>
+            <style>{`@keyframes shrink { from { width: 100%; } to { width: 0%; } }`}</style>
+          </div>
+        </div>
+      )}
+
       <div
         className={`fixed top-26.25 right-0 z-30 flex flex-col w-full h-[calc(100dvh-105px)] gap-8 py-6 px-8 border-l border-[#dddddd] bg-[#f3f3f3] dark:border-[#2d2d2d] dark:bg-[#111315] md:py-8 lg:top-0 lg:w-100 lg:h-screen lg:translate-x-0 lg:py-10 ${
           isTakeOrderModalOpen ? "translate-x-0" : "translate-x-full"
@@ -432,7 +488,7 @@ export default function TakeOrderSidePanel({
                     Masa {selectedTable?.tableNumber}
                   </h2>
                   <span className="text-[11px] font-medium opacity-50 text-[#121212] dark:text-[#ffffff] md:text-[14px] lg:text-[16px]">
-                    Leslie K.
+                    {isQuickOrder ? "Hızlı Sipariş" : "Leslie K."}
                   </span>
                 </div>
               </div>
@@ -572,7 +628,7 @@ export default function TakeOrderSidePanel({
                     </div>
                   </div>
 
-                  {isSentSynced && (
+                  {!isQuickOrder && isSentSynced && (
                     <div className="space-y-3">
                       <p className="text-[11px] font-bold uppercase tracking-widest text-gray-500">
                         Payment Method
@@ -613,9 +669,13 @@ export default function TakeOrderSidePanel({
               {/* Main action button */}
               <button
                 onClick={handleMainAction}
-                disabled={isPending || isAvailable}
+                disabled={isPending || (isQuickOrder ? !hasOrders : isAvailable)}
                 className={`w-full py-4 rounded-2xl text-lg font-bold transition-all disabled:opacity-50 ${
-                  isAvailable
+                  isQuickOrder
+                    ? hasOrders
+                      ? primaryButtonClass
+                      : "cursor-not-allowed border border-white/5 bg-[#c8c8c8] text-gray-700 dark:bg-[#222222]"
+                    : isAvailable
                     ? "cursor-not-allowed border border-white/5 bg-[#c8c8c8] text-gray-700 dark:bg-[#222222]"
                     : primaryButtonClass
                 }`}
