@@ -88,8 +88,8 @@ export default function CategorySlider({
         onMouseLeave={stopDragging}
         className={
           isListMode
-            ? "grid auto-cols-max grid-flow-col grid-rows-2 gap-4 overflow-x-auto cursor-grab active:cursor-grabbing"
-            : "flex flex-nowrap gap-4 overflow-x-auto cursor-grab active:cursor-grabbing"
+            ? "grid auto-cols-max grid-flow-col grid-rows-2 gap-4 overflow-x-auto cursor-grab active:cursor-grabbing pt-2"
+            : "flex flex-nowrap gap-4 overflow-x-auto cursor-grab active:cursor-grabbing pt-2"
         }
       >
         {isLoading ? (
