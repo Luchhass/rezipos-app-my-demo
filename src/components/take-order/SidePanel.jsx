@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import * as Icons from "lucide-react";
 import { CheckCircle2 } from "lucide-react";
+import PaymentModal from "@/components/take-order/PaymentModal";
 import {
   useClearTable,
   useDeleteOrderItem,
@@ -61,6 +62,7 @@ export default function TakeOrderSidePanel({
   const [isEditing, setIsEditing] = useState(false);
   const [activeMethod, setActiveMethod] = useState("cash");
   const [successModal, setSuccessModal] = useState(null);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   // Order State
   const tableOrders = selectedTable?.orders || [];
@@ -115,26 +117,10 @@ export default function TakeOrderSidePanel({
     return () => clearTimeout(timeout);
   }, [successModal]);
 
-  // Change Item Quantity
-  const handleChangeQuantity = async (orderId, currentQty, delta) => {
-    if (!selectedTable?._id) return;
-
-    try {
-      const nextQty = currentQty + delta;
-
-      if (nextQty <= 0) {
-        await deleteOrderItem.mutateAsync({ tableId: selectedTable._id, orderId });
-      } else {
-        await updateOrderItem.mutateAsync({
-          tableId: selectedTable._id,
-          orderId,
-          quantity: nextQty,
-        });
-      }
-    } catch (error) {
-      console.error("Order item update error:", error);
-    }
-  };
+  // Close Payment Modal On Table Change
+  useEffect(() => {
+    setIsPaymentModalOpen(false);
+  }, [selectedTable?._id]);
 
   // Delete Single Item
   const handleDeleteItem = async (orderId) => {
@@ -144,6 +130,21 @@ export default function TakeOrderSidePanel({
       await deleteOrderItem.mutateAsync({ tableId: selectedTable._id, orderId });
     } catch (error) {
       console.error("Delete order item error:", error);
+    }
+  };
+
+  // Confirm Full Payment From Modal
+  const handleConfirmFullPayment = async () => {
+    if (!selectedTable?._id) return;
+
+    try {
+      await payTable.mutateAsync(selectedTable._id);
+      setIsPaymentModalOpen(false);
+      setSuccessModal("pay");
+      setIsTakeOrderModalOpen(false);
+      setStep(0);
+    } catch (error) {
+      console.error("Full payment error:", error);
     }
   };
 
@@ -168,8 +169,8 @@ export default function TakeOrderSidePanel({
         await resetTable.mutateAsync(selectedTable._id);
         setSuccessModal("delete");
       } else if (isSentSynced) {
-        await payTable.mutateAsync(selectedTable._id);
-        setSuccessModal("pay");
+        setIsPaymentModalOpen(true);
+        return;
       } else if (isDraftOrUpdated) {
         await sendOrder.mutateAsync(selectedTable._id);
         setSuccessModal(hasLastSent ? "update" : "send");
@@ -195,6 +196,16 @@ export default function TakeOrderSidePanel({
 
   return (
     <>
+      <PaymentModal
+        open={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        selectedTable={selectedTable}
+        activeMethod={activeMethod}
+        setActiveMethod={setActiveMethod}
+        onConfirmFullPayment={handleConfirmFullPayment}
+        isPending={isPending}
+      />
+
       {/* Send Success Modal */}
       {successModal === "send" && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-6 backdrop-blur-sm">
@@ -346,20 +357,33 @@ export default function TakeOrderSidePanel({
 
                 <div className="flex flex-col">
                   <h2 className="text-[25px] tracking-tight text-[#121212] dark:text-white md:text-[28px] lg:text-[31px]">
-                    Masa {selectedTable?.tableNumber}
+                    {isQuickOrder ? "Hızlı Sipariş" : `Masa ${selectedTable?.tableNumber}`}
                   </h2>
+
                   <span className="text-[11px] font-medium text-[#121212] opacity-50 dark:text-white md:text-[14px] lg:text-[16px]">
-                    {isQuickOrder ? "Hızlı Sipariş" : "Leslie K."}
+                    {isQuickOrder ? `Kasa Slotu ${selectedTable?.tableNumber}` : "Leslie K."}
                   </span>
                 </div>
               </div>
 
-              <button
-                onClick={() => setIsEditing(!isEditing)}
-                className={`rounded-full p-3.5 ${isEditing ? "bg-red-500 text-white" : "bg-[#dddddd] hover:bg-[#cccccc] dark:bg-[#2d2d2d] dark:hover:bg-[#252527]"}`}
-              >
-                {isEditing ? <Icons.X size={16} /> : <Icons.Pencil size={16} className="text-[#121212] opacity-60 dark:text-white" />}
-              </button>
+              <div className="flex items-center gap-2">
+                {isEditing && tableOrders.length > 0 && (
+                  <button
+                    onClick={handleClearTable}
+                    disabled={isPending}
+                    className="rounded-2xl bg-red-100 px-4 py-3 text-sm font-bold text-red-700 transition-all hover:bg-red-200 disabled:opacity-50 dark:bg-red-900/20 dark:text-red-200 dark:hover:bg-red-900/30"
+                  >
+                    {clearTable.isPending ? "Temizleniyor..." : "Tümünü Temizle"}
+                  </button>
+                )}
+
+                <button
+                  onClick={() => setIsEditing(!isEditing)}
+                  className={`rounded-full p-3.5 ${isEditing ? "bg-red-500 text-white" : "bg-[#dddddd] hover:bg-[#cccccc] dark:bg-[#2d2d2d] dark:hover:bg-[#252527]"}`}
+                >
+                  {isEditing ? <Icons.X size={16} /> : <Icons.Pencil size={16} className="text-[#121212] opacity-60 dark:text-white" />}
+                </button>
+              </div>
             </div>
 
             {/* Orders List */}
@@ -393,26 +417,6 @@ export default function TakeOrderSidePanel({
                             <p className="text-[14px] font-bold text-[#121212] dark:text-white md:text-[17px]">{name}</p>
                             <span className="text-xs font-medium text-[#121212] opacity-50 dark:text-white">x{order.quantity}</span>
                           </div>
-
-                          {isEditing && (
-                            <div className="flex items-center gap-2 text-black dark:text-white">
-                              <button
-                                onClick={() => handleChangeQuantity(order._id, order.quantity, -1)}
-                                className="flex h-7 w-7 items-center justify-center rounded-[10px] border border-black/20 transition-all active:scale-90 dark:border-white/20"
-                              >
-                                −
-                              </button>
-
-                              <span className="w-4 text-center text-sm font-bold">{order.quantity}</span>
-
-                              <button
-                                onClick={() => handleChangeQuantity(order._id, order.quantity, 1)}
-                                className="flex h-7 w-7 items-center justify-center rounded-[10px] border border-black/20 transition-all active:scale-90 dark:border-white/20"
-                              >
-                                +
-                              </button>
-                            </div>
-                          )}
                         </div>
                       </div>
 
@@ -456,7 +460,7 @@ export default function TakeOrderSidePanel({
                       </div>
                     </div>
 
-                    {!isQuickOrder && isSentSynced && (
+                    {isQuickOrder && hasOrders && (
                       <div className="space-y-3">
                         <p className="text-[11px] font-bold uppercase tracking-widest text-gray-500">Payment Method</p>
 
@@ -479,17 +483,6 @@ export default function TakeOrderSidePanel({
                       </div>
                     )}
                   </div>
-                )}
-
-                {/* Clear Button */}
-                {showClearButton && (
-                  <button
-                    onClick={handleClearTable}
-                    disabled={isPending}
-                    className="w-full rounded-2xl bg-[#e5e7eb] py-4 text-lg font-bold text-[#121212] transition-all hover:bg-[#d9dce1] disabled:opacity-50 dark:bg-[#3a3a3a] dark:text-white dark:hover:bg-[#4a4a4a]"
-                  >
-                    {clearTable.isPending ? "Temizleniyor..." : "Temizle"}
-                  </button>
                 )}
 
                 {/* Main Action Button */}

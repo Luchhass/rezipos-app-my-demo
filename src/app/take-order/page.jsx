@@ -56,7 +56,7 @@ export default function TakeOrderPage() {
 
   // Quick Order Config
   const QUICK_ORDER_AREA_NAME = "Hızlı Sipariş";
-  const QUICK_ORDER_TABLE_COUNT = 3;
+  const QUICK_ORDER_TABLE_COUNT = 1;
 
   // Quick Order UI State
   const [isQuickOrderLoading, setIsQuickOrderLoading] = useState(false);
@@ -130,7 +130,7 @@ export default function TakeOrderPage() {
         throw new Error("Quick order area could not be resolved.");
       }
 
-      // Resolve Quick Order Tables
+      // Resolve Quick Order Table
       const currentQuickTables = tables.filter((table) => {
         const areaId = typeof table.areaId === "object" ? table.areaId?._id : table.areaId;
         return areaId === quickArea._id;
@@ -155,20 +155,14 @@ export default function TakeOrderPage() {
         })
         .sort((a, b) => (Number(a.tableNumber) || 0) - (Number(b.tableNumber) || 0));
 
-      // Find First Available Slot
-      const availableQuickSlot = quickTables.find((table) => {
-        const hasOrders = (table.orders?.length || 0) > 0;
-        const hasLastSentOrders = (table.lastSentOrders?.length || 0) > 0;
-        return !hasOrders && !hasLastSentOrders;
-      });
+      const quickSlot = quickTables[0];
 
-      if (!availableQuickSlot) {
-        alert("Tüm hızlı satış slotları dolu");
-        return;
+      if (!quickSlot?._id) {
+        throw new Error("Quick order slot could not be resolved.");
       }
 
-      // Select Slot And Continue
-      setSelectedTableId(availableQuickSlot._id);
+      // Select Single Quick Slot And Continue
+      setSelectedTableId(quickSlot._id);
       setStep(1);
 
       if (shouldShowSetupModal) {
@@ -181,6 +175,8 @@ export default function TakeOrderPage() {
       setIsQuickOrderLoading(false);
     }
   };
+
+  console.log(tables)
 
   return (
     <div>
@@ -200,7 +196,7 @@ export default function TakeOrderPage() {
               {/* Success Text */}
               <div>
                 <h3 className="mb-1 text-xl font-bold text-[#121212] dark:text-white">Hızlı sipariş hazır!</h3>
-                <p className="text-sm text-[#121212] opacity-60 dark:text-white">Kasa slotları otomatik oluşturuldu.</p>
+                <p className="text-sm text-[#121212] opacity-60 dark:text-white">Kasa slotu otomatik hazırlandı.</p>
               </div>
             </div>
 
@@ -341,34 +337,34 @@ export default function TakeOrderPage() {
       />
 
       {/* Mobile Footer */}
-      <div className="pointer-events-none md:ml-70 lg:ml-0 fixed right-0 bottom-0 left-0 bg-[#f3f3f3] px-8 py-6 md:py-8 dark:bg-[#111315] lg:hidden">
+      <div className="pointer-events-none md:ml-70 lg:ml-0 fixed right-0 bottom-0 left-0 bg-[#f3f3f3] px-8 pb-6 pt-6 dark:bg-[#111315] lg:hidden">
         <button
           disabled={isQuickOrder ? !hasOrders : isAvailable}
           onClick={() => setIsTakeOrderModalOpen((prev) => !prev)}
-          className={`pointer-events-auto w-full rounded-2xl py-4 font-bold active:scale-[0.98] ${
+          className={`pointer-events-auto w-full rounded-2xl py-4 text-lg font-bold active:scale-[0.98] disabled:opacity-50 ${
             isQuickOrder
               ? hasOrders
                 ? "bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-200"
-                : "bg-[#1c1c1e] text-[#5e5e5e] opacity-50"
+                : "bg-[#1c1c1e] text-[#5e5e5e]"
               : isCancelledState
               ? "bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-200"
               : isSentSynced
               ? "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-200"
               : isDraftOrUpdated
               ? "bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-200"
-              : "bg-[#1c1c1e] text-[#5e5e5e] opacity-50"
+              : "bg-[#1c1c1e] text-[#5e5e5e]"
           }`}
         >
           {isQuickOrder
             ? hasOrders
-              ? "Siparişi Gönder ve Ödeme Al"
+              ? "Hızlı Siparişi Gör"
               : "Sipariş Yok"
             : isCancelledState
-            ? "Siparişi Sil"
+            ? "İptal Detayını Gör"
             : isSentSynced
-            ? "Ödeme Al"
+            ? "Ödeme Detayını Gör"
             : isDraftOrUpdated
-            ? "Siparişi Gönder"
+            ? "Sipariş Detayını Gör"
             : "Sipariş Yok"}
         </button>
       </div>
