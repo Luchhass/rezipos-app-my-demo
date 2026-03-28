@@ -97,40 +97,6 @@ export default function SettingsPage() {
         {/* Divider */}
         <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
-        {/* Language */}
-        <section className="flex flex-col gap-5">
-          <div>
-            <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Dil</h2>
-            <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
-              Arayüzdeki tüm metinlerin, menülerin ve bildirimlerin hangi dilde gösterileceğini belirler.
-            </p>
-          </div>
-
-          <div className="flex gap-3">
-            {LANG_OPTIONS.map((option) => {
-              const active = language === option.id;
-
-              return (
-                <button
-                  key={option.id}
-                  onClick={() => setLanguage(option.id)}
-                  className={`flex flex-1 flex-col items-start gap-3 rounded-2xl border-2 px-5 py-4 text-left font-bold transition-all ${
-                    active
-                      ? "border-[#a5b4fc] bg-[#a5b4fc]/10 text-[#121212] dark:bg-[#a5b4fc]/10 dark:text-white"
-                      : "border-transparent bg-[#dddddd] text-[#121212] opacity-50 hover:opacity-75 dark:bg-[#2d2d2d] dark:text-white"
-                  }`}
-                >
-                  <span className="text-2xl leading-none">{option.flag}</span>
-                  <span className="text-[15px]">{option.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Divider */}
-        <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
-
         {/* Order View */}
         <section className="flex flex-col gap-5">
           <div>

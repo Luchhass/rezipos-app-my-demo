@@ -112,10 +112,6 @@ export default function Header() {
               <Settings size={20} />
               Ayarlar
             </Link>
-
-            <p className="mt-4 px-4 text-[10px] font-bold uppercase tracking-wider text-neutral-400 md:mt-6">
-              © {new Date().getFullYear()} ReziPOS
-            </p>
           </div>
         </div>
       </aside>
