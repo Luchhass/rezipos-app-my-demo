@@ -6,8 +6,11 @@ import salesHistory from "@/data/sales-history.json";
 import SalesHistorySidePanel from "@/components/sales-history/SalesHistorySidePanel";
 import GridView from "@/components/sales-history/GridView";
 import ListView from "@/components/sales-history/ListView";
+import { redirect } from "next/navigation";
 
 export default function OrdersPage() {
+  redirect("/take-order");
+
   // Sidebar State
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
 

@@ -8,6 +8,7 @@ import StatCards from "@/components/dashboard/StatCards";
 import TopProductsCard from "@/components/dashboard/TopProductsCard";
 import OrdersChartCard from "@/components/dashboard/OrdersChartCard";
 import CategoryPieCard from "@/components/dashboard/CategoryPieCard";
+import { redirect } from "next/navigation";
 
 // Month Definitions
 const MONTHS = [
@@ -26,6 +27,8 @@ const MONTHS = [
 ];
 
 export default function DashboardPage() {
+  redirect("/take-order");
+
   // Filter State
   const [filterMode, setFilterMode] = useState("today");
   const [isFilterOpen, setIsFilterOpen] = useState(false);

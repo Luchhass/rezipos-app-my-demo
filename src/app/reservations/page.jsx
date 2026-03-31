@@ -5,8 +5,11 @@ import { Calendar, ChevronDown } from "lucide-react";
 import data from "@/data/reservations.json";
 import FloorSlider from "@/components/reservations/FloorSlider";
 import ReservationTimeline from "@/components/reservations/ReservationTimeline";
+import { redirect } from "next/navigation";
 
 export default function ReservationPage() {
+  redirect("/take-order");
+  
   // Restaurant Config
   const { restaurantConfig, reservations } = data;
   const { layout, operatingHours } = restaurantConfig;
