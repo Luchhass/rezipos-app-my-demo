@@ -201,11 +201,11 @@ export default function TakeOrderPage() {
   // Auto Trigger Quick Order From Header Button
   useEffect(() => {
     if (!isQuickOrderRoute) return;
-    if (step !== 0) return;
     if (isQuickOrderLoading) return;
+    if (isQuickOrder) return;
 
     handleQuickOrder();
-  }, [isQuickOrderRoute, step, isQuickOrderLoading, handleQuickOrder]);
+  }, [isQuickOrderRoute, isQuickOrderLoading, isQuickOrder]);
 
   return (
     <div>
