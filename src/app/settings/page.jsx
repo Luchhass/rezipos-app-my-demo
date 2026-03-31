@@ -63,7 +63,7 @@ export default function SettingsPage() {
   return (
     <>
       {/* Page Content */}
-      <div className="mt-26 flex max-w-160 select-none flex-col gap-4 px-8 py-6 md:mt-0 md:ml-70 md:gap-6 md:py-8 lg:gap-8 lg:py-10">
+      <div className="mt-26 flex max-w-160 select-none flex-col gap-8 px-8 py-6 md:mt-0 md:ml-70 md:py-8 lg:py-10">
         {/* Theme */}
         <section className="flex flex-col gap-5">
           <div>

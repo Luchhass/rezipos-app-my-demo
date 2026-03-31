@@ -3,16 +3,24 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Settings } from "lucide-react";
+import {
+  LayoutDashboard,
+  UtensilsCrossed,
+  Zap,
+  Store,
+  History,
+  CalendarDays,
+  Settings,
+} from "lucide-react";
 
 // Navigation Links
 const NAV_LINKS = [
-  // { href: "/dashboard", label: "Restoran Paneli" },
-  { href: "/take-order", label: "Masaya Sipariş", type: "take-order" },
-  { href: "/take-order?quickOrder=1", label: "Hızlı Sipariş", type: "quick-order" },
-  { href: "/restaurant-management", label: "Restoran Yönetimi", type: "default" },
-  // { href: "/sales-history", label: "Sipariş Geçmişi" },
-  // { href: "/reservations", label: "Rezervasyon" },
+  { href: "/dashboard", label: "Restoran Paneli", icon: LayoutDashboard },
+  { href: "/take-order", label: "Masaya Sipariş", type: "take-order", icon: UtensilsCrossed },
+  { href: "/take-order?quickOrder=1", label: "Hızlı Sipariş", type: "quick-order", icon: Zap },
+  { href: "/restaurant-management", label: "Restoran Yönetimi", type: "default", icon: Store },
+  { href: "/sales-history", label: "Sipariş Geçmişi", icon: History },
+  { href: "/reservations", label: "Rezervasyon", icon: CalendarDays },
 ];
 
 // Hidden Header Routes
@@ -82,7 +90,7 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex flex-col gap-2">
-          {NAV_LINKS.map(({ href, label, type }) => {
+          {NAV_LINKS.map(({ href, label, type, icon: Icon }) => {
             const isActive =
               type === "take-order"
                 ? pathname === "/take-order" && !isQuickOrderActive
@@ -95,13 +103,14 @@ export default function Header() {
                 key={href}
                 href={href}
                 onClick={() => setIsOpen(false)}
-                className={`max-w-xs rounded-2xl p-4 text-base font-medium transition-all ${
+                className={`flex max-w-xs items-center gap-4 rounded-2xl p-4 text-base font-medium transition-all ${
                   isActive
                     ? "bg-[#dddddd] text-[#98A2F3] dark:bg-[#2d2d2d]"
                     : "text-[#121212] opacity-70 hover:bg-[#dddddd]/50 hover:opacity-100 dark:text-white dark:hover:bg-[#2d2d2d]/50"
                 }`}
               >
-                {label}
+                <Icon size={20} />
+                <span>{label}</span>
               </Link>
             );
           })}
