@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import * as Icons from "lucide-react";
 
 // Components
@@ -36,6 +37,9 @@ const areOrdersEqual = (ordersA = [], ordersB = []) => {
 };
 
 export default function TakeOrderPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   // Step State
   const [step, setStep] = useState(0);
 
@@ -61,6 +65,10 @@ export default function TakeOrderPage() {
   // Quick Order UI State
   const [isQuickOrderLoading, setIsQuickOrderLoading] = useState(false);
   const [quickOrderSetupModalOpen, setQuickOrderSetupModalOpen] = useState(false);
+
+  // Quick Order Route State
+  const isQuickOrderRoute = searchParams.get("quickOrder") === "1";
+  const wasQuickOrderRoute = useRef(isQuickOrderRoute);
 
   // Area Data
   const { data: areas = [], refetch: refetchAreas } = useAreas();
@@ -103,8 +111,21 @@ export default function TakeOrderPage() {
     return () => clearTimeout(timeout);
   }, [quickOrderSetupModalOpen]);
 
+  // Reset Page When Leaving Quick Order Route
+  useEffect(() => {
+    if (wasQuickOrderRoute.current && !isQuickOrderRoute) {
+      setStep(0);
+      setSelectedTableId(null);
+      setSelectedCategory(null);
+      setSearchTerm("");
+      setIsTakeOrderModalOpen(false);
+    }
+
+    wasQuickOrderRoute.current = isQuickOrderRoute;
+  }, [isQuickOrderRoute]);
+
   // Handle Quick Order
-  const handleQuickOrder = async () => {
+  const handleQuickOrder = useCallback(async () => {
     if (isQuickOrderLoading) return;
 
     setIsQuickOrderLoading(true);
@@ -164,6 +185,7 @@ export default function TakeOrderPage() {
       // Select Single Quick Slot And Continue
       setSelectedTableId(quickSlot._id);
       setStep(1);
+      router.replace("/take-order?quickOrder=1");
 
       if (shouldShowSetupModal) {
         setQuickOrderSetupModalOpen(true);
@@ -174,9 +196,16 @@ export default function TakeOrderPage() {
     } finally {
       setIsQuickOrderLoading(false);
     }
-  };
+  }, [isQuickOrderLoading, areas, tables, addArea, addTable, refetchAreas, refetchTables, router]);
 
-  console.log(tables)
+  // Auto Trigger Quick Order From Header Button
+  useEffect(() => {
+    if (!isQuickOrderRoute) return;
+    if (step !== 0) return;
+    if (isQuickOrderLoading) return;
+
+    handleQuickOrder();
+  }, [isQuickOrderRoute, step, isQuickOrderLoading, handleQuickOrder]);
 
   return (
     <div>
@@ -212,10 +241,10 @@ export default function TakeOrderPage() {
 
       {/* Page Content */}
       <div className="mt-26 pb-26 flex select-none flex-col gap-8 overflow-y-auto px-8 py-6 md:mt-0 md:ml-70 md:py-8 lg:mr-100 lg:py-10">
-        {step === 0 ? (
-          <>
-            {/* Table Selection */}
-            <header className="relative flex h-14.5 shrink-0 justify-between gap-4">
+        {/* Page Header */}
+        <header className="relative flex h-14.5 shrink-0 items-center justify-between gap-4">
+          {step === 0 ? (
+            <>
               {/* Status Filter */}
               <div className="relative flex-1 md:w-50 md:flex-none">
                 <button onClick={() => setIsFilterOpen((prev) => !prev)} className="flex h-14.5 w-full items-center overflow-hidden rounded-2xl">
@@ -259,17 +288,46 @@ export default function TakeOrderPage() {
                 )}
               </div>
 
-              {/* Quick Order Button */}
-              <button
-                onClick={handleQuickOrder}
-                disabled={isQuickOrderLoading}
-                className="flex h-14.5 items-center justify-center gap-2 rounded-2xl bg-[#a5b4fc] px-8 font-bold text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
-              >
-                <Icons.Zap size={18} />
-                {isQuickOrderLoading ? "Hazırlanıyor..." : "Hızlı Sipariş"}
-              </button>
-            </header>
+              {/* Placeholder For Balanced Layout */}
+              <div className="hidden h-14.5 w-14 shrink-0 md:block" />
+            </>
+          ) : (
+            <>
+              {/* Search Input */}
+              <div className="flex w-full items-center md:w-1/2">
+                <button className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-l-2xl border-r border-white/20 bg-[#a5b4fc]">
+                  <Icons.Search size={20} className="text-white" />
+                </button>
 
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  className="h-14.5 min-w-0 flex-1 rounded-r-2xl bg-[#dddddd] px-4 text-[#121212] outline-none dark:bg-[#2d2d2d] dark:text-white"
+                />
+              </div>
+
+              {/* Back Button */}
+              {!isQuickOrderRoute && (
+                <button
+                  onClick={() => {
+                    setStep(0);
+                    setSelectedTableId(null);
+                    setSelectedCategory(null);
+                    setSearchTerm("");
+                  }}
+                  className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#121212] text-white hover:opacity-90 active:scale-95 dark:bg-white dark:text-black"
+                >
+                  <Icons.ChevronLeft size={20} />
+                </button>
+              )}
+            </>
+          )}
+        </header>
+
+        {step === 0 ? (
+          <>
             {/* Area Slider */}
             <AreaSlider selectedArea={selectedArea} setSelectedArea={setSelectedArea} activeAction="" />
 
@@ -287,32 +345,6 @@ export default function TakeOrderPage() {
           </>
         ) : (
           <>
-            {/* Product Selection */}
-            <header className="flex items-center justify-between gap-4">
-              {/* Search Input */}
-              <div className="flex w-full items-center md:w-1/2">
-                <button className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-l-2xl border-r border-white/20 bg-[#a5b4fc]">
-                  <Icons.Search size={20} className="text-white" />
-                </button>
-
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={(event) => setSearchTerm(event.target.value)}
-                  className="h-14.5 min-w-0 flex-1 rounded-r-2xl bg-[#dddddd] px-4 text-[#121212] outline-none dark:bg-[#2d2d2d] dark:text-white"
-                />
-              </div>
-
-              {/* Back Button */}
-              <button
-                onClick={() => setStep(0)}
-                className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#121212] text-white hover:opacity-90 active:scale-95 dark:bg-white dark:text-black"
-              >
-                <Icons.ChevronLeft size={20} />
-              </button>
-            </header>
-
             {/* Category Slider */}
             <CategorySlider selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
 

@@ -76,16 +76,13 @@ export default function TakeOrderSidePanel({
   const isDraftOrUpdated = hasOrders && !isSentSynced;
   const isAvailable = !hasOrders && !hasLastSent;
 
-  // Totals
-  const subtotal = useMemo(() => {
+  // Total
+  const total = useMemo(() => {
     return tableOrders.reduce((acc, order) => {
       const price = order.productId?.price || 0;
       return acc + price * order.quantity;
     }, 0);
   }, [tableOrders]);
-
-  const tax = subtotal * 0.1;
-  const total = subtotal + tax;
 
   // Pending State
   const isPending =
@@ -442,17 +439,6 @@ export default function TakeOrderSidePanel({
               <div className="flex flex-col gap-6">
                 {tableOrders.length > 0 && (
                   <div className="flex flex-col gap-6 animate-in slide-in-from-bottom-4">
-                    <div>
-                      <div className="flex justify-between text-sm text-gray-500">
-                        <span>Subtotal</span>
-                        <span>${subtotal.toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between text-sm text-gray-500">
-                        <span>Tax 10%</span>
-                        <span>${tax.toFixed(2)}</span>
-                      </div>
-                    </div>
-
                     <div className="border-t border-black/10 pt-4 dark:border-white/10">
                       <div className="flex items-baseline justify-between text-black dark:text-white">
                         <span className="text-xl">Total</span>

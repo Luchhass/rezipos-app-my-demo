@@ -36,7 +36,7 @@ export default function AuthPage() {
   // Redirect If Token Exists
   useEffect(() => {
     if (typeof window !== "undefined" && localStorage.getItem("token")) {
-      router.replace("/dashboard");
+      router.replace("/take-order");
     }
   }, [router]);
 

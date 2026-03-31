@@ -34,15 +34,12 @@ export default function PaymentModal({
     return tableOrders.filter((order) => selectedOrderIds.includes(order._id));
   }, [tableOrders, selectedOrderIds]);
 
-  const subtotal = useMemo(() => {
+  const total = useMemo(() => {
     return selectedOrders.reduce((acc, order) => {
       const price = order.productId?.price || 0;
       return acc + price * order.quantity;
     }, 0);
   }, [selectedOrders]);
-
-  const tax = subtotal * 0.1;
-  const total = subtotal + tax;
 
   const isAllSelected = tableOrders.length > 0 && selectedOrderIds.length === tableOrders.length;
   const hasSelection = selectedOrderIds.length > 0;
@@ -196,16 +193,6 @@ export default function PaymentModal({
                   <div className="flex justify-between text-sm text-gray-500">
                     <span>Seçilen Ürün</span>
                     <span>{selectedOrderIds.length}</span>
-                  </div>
-
-                  <div className="flex justify-between text-sm text-gray-500">
-                    <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
-                  </div>
-
-                  <div className="flex justify-between text-sm text-gray-500">
-                    <span>Tax 10%</span>
-                    <span>${tax.toFixed(2)}</span>
                   </div>
 
                   <div className="border-t border-black/10 pt-4 dark:border-white/10">

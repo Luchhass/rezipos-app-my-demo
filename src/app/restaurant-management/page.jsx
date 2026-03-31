@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutGrid, UtensilsCrossed } from "lucide-react";
+import { LayoutGrid, UtensilsCrossed, ChartColumn } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const SECTIONS = [
@@ -16,6 +16,12 @@ const SECTIONS = [
     icon: UtensilsCrossed,
     color: "#a5b4fc",
   },
+  {
+    href: "/restaurant-management/reports",
+    label: "Raporlar",
+    icon: ChartColumn,
+    color: "#f9a8d4",
+  },
 ];
 
 export default function RestaurantManagementPage() {
@@ -25,7 +31,7 @@ export default function RestaurantManagementPage() {
   return (
     <div className="pt-32 h-screen select-none px-8 py-6 md:mt-0 md:ml-70 md:py-8 lg:mr-100 lg:py-10">
       {/* Management Grid */}
-      <div className="grid h-full grid-cols-1 grid-rows-2 gap-8">
+      <div className="grid h-full grid-cols-1 grid-rows-3 gap-8">
         {SECTIONS.map(({ href, label, icon: Icon, color }) => (
           <button
             key={href}

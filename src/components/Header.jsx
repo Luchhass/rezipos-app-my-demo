@@ -1,17 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Settings } from "lucide-react";
 
 // Navigation Links
 const NAV_LINKS = [
-  { href: "/dashboard", label: "Restoran Paneli" },
-  { href: "/take-order", label: "Sipariş Al" },
-  { href: "/restaurant-management", label: "Restoran Yönetimi" },
-  { href: "/sales-history", label: "Sipariş Geçmişi" },
-  { href: "/reservations", label: "Rezervasyon" },
+  // { href: "/dashboard", label: "Restoran Paneli" },
+  { href: "/take-order", label: "Masaya Sipariş", type: "take-order" },
+  { href: "/take-order?quickOrder=1", label: "Hızlı Sipariş", type: "quick-order" },
+  { href: "/restaurant-management", label: "Restoran Yönetimi", type: "default" },
+  // { href: "/sales-history", label: "Sipariş Geçmişi" },
+  // { href: "/reservations", label: "Rezervasyon" },
 ];
 
 // Hidden Header Routes
@@ -23,6 +24,10 @@ export default function Header() {
 
   // Current Route
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Quick Order Active State
+  const isQuickOrderActive = pathname === "/take-order" && searchParams.get("quickOrder") === "1";
 
   if (AUTH_ROUTES.includes(pathname)) return null;
 
@@ -77,20 +82,29 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex flex-col gap-2">
-          {NAV_LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setIsOpen(false)}
-              className={`max-w-xs rounded-2xl p-4 text-base font-medium transition-all ${
-                pathname === href || (href !== "/dashboard" && pathname.startsWith(href))
-                  ? "bg-[#dddddd] text-[#98A2F3] dark:bg-[#2d2d2d]"
-                  : "text-[#121212] opacity-70 hover:bg-[#dddddd]/50 hover:opacity-100 dark:text-white dark:hover:bg-[#2d2d2d]/50"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+          {NAV_LINKS.map(({ href, label, type }) => {
+            const isActive =
+              type === "take-order"
+                ? pathname === "/take-order" && !isQuickOrderActive
+                : type === "quick-order"
+                ? isQuickOrderActive
+                : pathname === href || pathname.startsWith(href);
+
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setIsOpen(false)}
+                className={`max-w-xs rounded-2xl p-4 text-base font-medium transition-all ${
+                  isActive
+                    ? "bg-[#dddddd] text-[#98A2F3] dark:bg-[#2d2d2d]"
+                    : "text-[#121212] opacity-70 hover:bg-[#dddddd]/50 hover:opacity-100 dark:text-white dark:hover:bg-[#2d2d2d]/50"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Bottom Area */}
