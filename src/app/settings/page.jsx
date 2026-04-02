@@ -14,9 +14,20 @@ export default function SettingsPage() {
   const [autoUpdate, setAutoUpdate] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+
   const [isAddMemberModalOpen, setIsAddMemberModalOpen] = useState(false);
+  const [isEditMemberModalOpen, setIsEditMemberModalOpen] = useState(false);
+  const [isDeleteMemberModalOpen, setIsDeleteMemberModalOpen] = useState(false);
+
   const [newName, setNewName] = useState("");
   const [newRole, setNewRole] = useState("");
+
+  const [editingMemberId, setEditingMemberId] = useState(null);
+  const [editingName, setEditingName] = useState("");
+  const [editingRole, setEditingRole] = useState("");
+
+  const [memberToDelete, setMemberToDelete] = useState(null);
+
   const [members, setMembers] = useState([
     { id: 1, name: "Ahmet Kaya", role: "Kaptan" },
     { id: 2, name: "Merve Yıldız", role: "Servis" },
@@ -47,10 +58,63 @@ export default function SettingsPage() {
   function addMember() {
     if (!newName.trim()) return;
 
-    setMembers((prev) => [...prev, { id: Date.now(), name: newName.trim(), role: newRole.trim() || "—" }]);
+    setMembers((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        name: newName.trim(),
+        role: newRole.trim() || "—",
+      },
+    ]);
+
     setNewName("");
     setNewRole("");
     setIsAddMemberModalOpen(false);
+  }
+
+  // Open Edit Member Modal
+  function openEditMemberModal(member) {
+    setEditingMemberId(member.id);
+    setEditingName(member.name);
+    setEditingRole(member.role === "—" ? "" : member.role);
+    setIsEditMemberModalOpen(true);
+  }
+
+  // Save Edited Member
+  function saveEditedMember() {
+    if (!editingName.trim()) return;
+
+    setMembers((prev) =>
+      prev.map((member) =>
+        member.id === editingMemberId
+          ? {
+              ...member,
+              name: editingName.trim(),
+              role: editingRole.trim() || "—",
+            }
+          : member
+      )
+    );
+
+    setEditingMemberId(null);
+    setEditingName("");
+    setEditingRole("");
+    setIsEditMemberModalOpen(false);
+  }
+
+  // Open Delete Member Modal
+  function openDeleteMemberModal(member) {
+    setMemberToDelete(member);
+    setIsDeleteMemberModalOpen(true);
+  }
+
+  // Delete Member
+  function deleteMember() {
+    if (!memberToDelete) return;
+
+    setMembers((prev) => prev.filter((member) => member.id !== memberToDelete.id));
+    setMemberToDelete(null);
+    setIsDeleteMemberModalOpen(false);
   }
 
   // Handle Logout
@@ -65,7 +129,7 @@ export default function SettingsPage() {
       {/* Page Content */}
       <div className="mt-26 flex max-w-160 select-none flex-col gap-8 px-8 py-6 md:mt-0 md:ml-70 md:py-8 lg:py-10">
         {/* Theme */}
-        <section className="flex flex-col gap-5">
+        <section className="flex flex-col gap-20">
           <div>
             <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Tema</h2>
             <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
@@ -98,7 +162,7 @@ export default function SettingsPage() {
         <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
         {/* Order View */}
-        <section className="flex flex-col gap-5">
+        <section className="flex flex-col gap-20">
           <div>
             <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Sipariş Görünümü</h2>
             <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
@@ -131,7 +195,7 @@ export default function SettingsPage() {
         <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
         {/* Notifications */}
-        <section className="flex flex-col gap-5">
+        <section className="flex flex-col gap-20">
           <div>
             <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Bildirimler</h2>
             <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
@@ -198,7 +262,7 @@ export default function SettingsPage() {
         <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
         {/* Team */}
-        <section className="flex flex-col gap-5">
+        <section className="flex flex-col gap-20">
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Ekip</h2>
@@ -217,7 +281,10 @@ export default function SettingsPage() {
 
           <div className="flex flex-col gap-3">
             {members.map((member) => (
-              <div key={member.id} className="flex items-center gap-4 rounded-2xl bg-[#dddddd] px-5 py-4 dark:bg-[#2d2d2d]">
+              <div
+                key={member.id}
+                className="flex items-center gap-4 rounded-2xl bg-[#dddddd] px-5 py-4 dark:bg-[#2d2d2d]"
+              >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#a5b4fc]/20 text-[13px] font-black text-[#a5b4fc]">
                   {member.name
                     .split(" ")
@@ -231,6 +298,22 @@ export default function SettingsPage() {
                   <p className="text-[14px] leading-none font-bold text-[#121212] dark:text-white">{member.name}</p>
                   <p className="mt-0.5 text-[11px] font-bold text-[#121212] opacity-40 dark:text-white">{member.role}</p>
                 </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => openEditMemberModal(member)}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-[#121212] transition-all hover:bg-black/10 active:scale-95 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                  >
+                    <Icons.Pencil size={16} strokeWidth={2.5} />
+                  </button>
+
+                  <button
+                    onClick={() => openDeleteMemberModal(member)}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-500/10 text-red-500 transition-all hover:bg-red-500/15 active:scale-95"
+                  >
+                    <Icons.Trash2 size={16} strokeWidth={2.5} />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -240,7 +323,7 @@ export default function SettingsPage() {
         <div className="h-px w-full shrink-0 bg-[#dddddd] dark:bg-[#2d2d2d]" />
 
         {/* Session */}
-        <section className="flex flex-col gap-5">
+        <section className="flex flex-col gap-20">
           <div>
             <h2 className="text-[32px] leading-none font-black tracking-tighter text-[#121212] dark:text-white">Oturum</h2>
             <p className="mt-2 text-[13px] leading-relaxed font-medium text-gray-400 dark:text-gray-500">
@@ -374,6 +457,103 @@ export default function SettingsPage() {
                   className="flex-1 rounded-2xl bg-[#a5b4fc] py-3.5 font-bold text-white hover:opacity-90 active:scale-[0.98]"
                 >
                   Kaydet
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Member Modal */}
+      {isEditMemberModalOpen && (
+        <div
+          onClick={() => setIsEditMemberModalOpen(false)}
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 px-6 backdrop-blur-sm"
+        >
+          <div
+            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-sm overflow-hidden rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]"
+          >
+            <div className="flex flex-col gap-4 p-8">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold text-[#121212] dark:text-white">Üyeyi Düzenle</h3>
+
+                <button onClick={() => setIsEditMemberModalOpen(false)} className="text-gray-400 hover:text-gray-600">
+                  <Icons.X size={20} />
+                </button>
+              </div>
+
+              <input
+                value={editingName}
+                onChange={(event) => setEditingName(event.target.value)}
+                placeholder="İsim soyisim"
+                className="h-12 w-full rounded-2xl bg-[#dddddd] px-4 text-[14px] font-bold text-[#121212] outline-none placeholder:opacity-40 dark:bg-[#2d2d2d] dark:text-white"
+              />
+
+              <input
+                value={editingRole}
+                onChange={(event) => setEditingRole(event.target.value)}
+                placeholder="Görev (ör. Servis, Mutfak)"
+                className="h-12 w-full rounded-2xl bg-[#dddddd] px-4 text-[14px] font-bold text-[#121212] outline-none placeholder:opacity-40 dark:bg-[#2d2d2d] dark:text-white"
+              />
+
+              <div className="mt-2 flex gap-3">
+                <button
+                  onClick={() => setIsEditMemberModalOpen(false)}
+                  className="flex-1 rounded-2xl bg-[#dddddd] py-3.5 font-bold text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
+                >
+                  İptal
+                </button>
+
+                <button
+                  onClick={saveEditedMember}
+                  className="flex-1 rounded-2xl bg-[#a5b4fc] py-3.5 font-bold text-white hover:opacity-90 active:scale-[0.98]"
+                >
+                  Güncelle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Member Modal */}
+      {isDeleteMemberModalOpen && (
+        <div
+          onClick={() => setIsDeleteMemberModalOpen(false)}
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 px-6 backdrop-blur-sm"
+        >
+          <div
+            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-sm overflow-hidden rounded-2xl bg-white animate-in fade-in zoom-in-95 duration-200 dark:bg-[#1a1a1a]"
+          >
+            <div className="flex flex-col items-center gap-4 p-8 text-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-400/20">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-400">
+                  <Icons.Trash2 size={22} className="text-white" />
+                </div>
+              </div>
+
+              <div>
+                <h3 className="mb-1 text-xl font-bold text-[#121212] dark:text-white">Üyeyi Sil</h3>
+                <p className="text-sm text-[#121212] opacity-60 dark:text-white">
+                  <span className="font-bold">{memberToDelete?.name}</span> ekip listesinden kaldırılacak.
+                </p>
+              </div>
+
+              <div className="flex w-full gap-3">
+                <button
+                  onClick={() => setIsDeleteMemberModalOpen(false)}
+                  className="flex-1 rounded-2xl bg-[#dddddd] py-3.5 font-bold text-[#121212] hover:opacity-80 dark:bg-[#2d2d2d] dark:text-white"
+                >
+                  İptal
+                </button>
+
+                <button
+                  onClick={deleteMember}
+                  className="flex-1 rounded-2xl bg-red-400 py-3.5 font-bold text-white hover:bg-red-500 active:scale-[0.98]"
+                >
+                  Sil
                 </button>
               </div>
             </div>

@@ -135,6 +135,17 @@ export default function TakeOrderSidePanel({
     if (!selectedTable?._id) return;
 
     try {
+      if (isQuickOrder) {
+        await sendOrder.mutateAsync(selectedTable._id);
+        await payTable.mutateAsync(selectedTable._id);
+
+        setIsPaymentModalOpen(false);
+        setSuccessModal("quick-pay");
+        setIsTakeOrderModalOpen(false);
+        setStep(1);
+        return;
+      }
+
       await payTable.mutateAsync(selectedTable._id);
       setIsPaymentModalOpen(false);
       setSuccessModal("pay");
@@ -153,12 +164,7 @@ export default function TakeOrderSidePanel({
       if (isQuickOrder) {
         if (!hasOrders) return;
 
-        await sendOrder.mutateAsync(selectedTable._id);
-        await payTable.mutateAsync(selectedTable._id);
-
-        setSuccessModal("quick-pay");
-        setIsTakeOrderModalOpen(false);
-        setStep(0);
+        setIsPaymentModalOpen(true);
         return;
       }
 
@@ -179,6 +185,8 @@ export default function TakeOrderSidePanel({
       console.error("Main action error:", error);
     }
   };
+
+
 
   // Clear Table
   const handleClearTable = async () => {
@@ -439,35 +447,10 @@ export default function TakeOrderSidePanel({
               <div className="flex flex-col gap-6">
                 {tableOrders.length > 0 && (
                   <div className="flex flex-col gap-6 animate-in slide-in-from-bottom-4">
-                    <div className="border-t border-black/10 pt-4 dark:border-white/10">
-                      <div className="flex items-baseline justify-between text-black dark:text-white">
-                        <span className="text-xl">Total</span>
-                        <span className="text-2xl font-bold tracking-tight">${total.toFixed(2)}</span>
-                      </div>
+                    <div className="flex items-baseline justify-between text-black dark:text-white">
+                      <span className="text-xl">Total</span>
+                      <span className="text-2xl font-bold tracking-tight">${total.toFixed(2)}</span>
                     </div>
-
-                    {isQuickOrder && hasOrders && (
-                      <div className="space-y-3">
-                        <p className="text-[11px] font-bold uppercase tracking-widest text-gray-500">Payment Method</p>
-
-                        <div className="grid grid-cols-3 gap-2">
-                          {PAYMENT_METHODS.map(({ id, label, icon: Icon }) => (
-                            <button
-                              key={id}
-                              onClick={() => setActiveMethod(id)}
-                              className={`flex flex-col items-center justify-center gap-1.5 rounded-2xl border py-3.5 ${
-                                activeMethod === id
-                                  ? "border-transparent bg-[#121212] text-white dark:bg-white dark:text-black"
-                                  : "border-black/10 bg-transparent text-gray-400 dark:border-white/10"
-                              }`}
-                            >
-                              <Icon size={20} />
-                              <span className="text-[9px] font-bold">{label}</span>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 )}
 
