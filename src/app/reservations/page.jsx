@@ -8,7 +8,7 @@ import ReservationTimeline from "@/components/reservations/ReservationTimeline";
 import { redirect } from "next/navigation";
 
 export default function ReservationPage() {
-  // redirect("/take-order");
+  redirect("/take-order");
   
   // Restaurant Config
   const { restaurantConfig, reservations } = data;

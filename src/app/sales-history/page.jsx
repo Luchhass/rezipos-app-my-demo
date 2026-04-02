@@ -9,7 +9,7 @@ import ListView from "@/components/sales-history/ListView";
 import { redirect } from "next/navigation";
 
 export default function OrdersPage() {
-  // redirect("/take-order");
+  redirect("/take-order");
 
   // Sidebar State
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);

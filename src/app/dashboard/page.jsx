@@ -27,7 +27,7 @@ const MONTHS = [
 ];
 
 export default function DashboardPage() {
-  // redirect("/take-order");
+  redirect("/take-order");
 
   // Filter State
   const [filterMode, setFilterMode] = useState("today");

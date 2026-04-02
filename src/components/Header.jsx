@@ -15,12 +15,12 @@ import {
 
 // Navigation Links
 const NAV_LINKS = [
-  { href: "/dashboard", label: "Restoran Paneli", icon: LayoutDashboard },
+  // { href: "/dashboard", label: "Restoran Paneli", icon: LayoutDashboard },
   { href: "/take-order", label: "Masaya Sipariş", type: "take-order", icon: UtensilsCrossed },
   { href: "/take-order?quickOrder=1", label: "Hızlı Sipariş", type: "quick-order", icon: Zap },
   { href: "/restaurant-management", label: "Restoran Yönetimi", type: "default", icon: Store },
-  { href: "/sales-history", label: "Sipariş Geçmişi", icon: History },
-  { href: "/reservations", label: "Rezervasyon", icon: CalendarDays },
+  // { href: "/sales-history", label: "Sipariş Geçmişi", icon: History },
+  // { href: "/reservations", label: "Rezervasyon", icon: CalendarDays },
 ];
 
 // Hidden Header Routes
