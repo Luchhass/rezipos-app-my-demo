@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { redirect } from "next/navigation";
 import * as Icons from "lucide-react";
 import AreaSlider from "@/components/table-management/AreaSlider";
 import TableGrid from "@/components/table-management/TableGrid";
@@ -41,7 +42,15 @@ export default function TableManagementPage() {
       {/* Page Content */}
       <div className="mt-26 flex select-none flex-col gap-8 overflow-y-auto px-8 py-6 md:mt-0 md:ml-70 md:py-8 lg:mr-100 lg:py-10">
         {/* Header */}
-        <header className="relative flex h-14.5 shrink-0 gap-4">
+        <header className="relative flex justify-between h-14.5 shrink-0 gap-4">
+          {/* Back Button */}
+          <button
+            onClick={() => redirect("/restaurant-management")}
+            className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#121212] text-white hover:opacity-90 active:scale-95 dark:bg-white dark:text-black"
+          >
+            <Icons.ArrowLeft size={22} strokeWidth={2.5} />
+          </button>
+          
           {/* Status Filter */}
           <div className="relative flex-1 md:w-50 md:flex-none">
             <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex h-14.5 w-full items-center overflow-hidden rounded-2xl">
@@ -80,7 +89,7 @@ export default function TableManagementPage() {
           </div>
 
           {/* Mobile Add Button */}
-          <div className="flex flex-1 justify-end">
+          <div className="flex lg:hidden justify-end">
             <button
               onClick={() => setIsTableModalOpen(!isTableModalOpen)}
               className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#98a2f3] text-white hover:opacity-90 active:scale-95 dark:bg-white dark:text-black lg:hidden"

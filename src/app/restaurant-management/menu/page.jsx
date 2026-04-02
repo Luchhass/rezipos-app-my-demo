@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { redirect } from "next/navigation";
 import * as Icons from "lucide-react";
 import CategorySlider from "@/components/menu-management/CategorySlider";
 import ProductGrid from "@/components/menu-management/ProductGrid";
@@ -27,6 +28,14 @@ export default function MenuManagementPage() {
       <div className="mt-26 flex select-none flex-col gap-8 overflow-y-auto px-8 py-6 md:mt-0 md:ml-70 md:py-8 lg:mr-100 lg:py-10">
         {/* Header */}
         <header className="flex items-center justify-between gap-4">
+          {/* Back Button */}
+          <button
+            onClick={() => redirect("/restaurant-management")}
+            className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#121212] text-white hover:opacity-90 active:scale-95 dark:bg-white dark:text-black"
+          >
+            <Icons.ArrowLeft size={22} strokeWidth={2.5} />
+          </button>
+
           {/* Search Input */}
           <div className="flex w-full items-center md:w-1/2">
             <button className="flex h-14.5 w-14 shrink-0 items-center justify-center rounded-l-2xl border-r border-white/20 bg-[#a5b4fc] p-4.5">
