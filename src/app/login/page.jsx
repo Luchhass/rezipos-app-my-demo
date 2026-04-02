@@ -36,7 +36,7 @@ export default function AuthPage() {
   // Redirect If Token Exists
   useEffect(() => {
     if (typeof window !== "undefined" && localStorage.getItem("token")) {
-      router.replace("/dashboard");
+      router.replace("/take-order");
     }
   }, [router]);
 
@@ -62,7 +62,7 @@ export default function AuthPage() {
         {
           onSuccess: () => {
             setSuccessModal("login");
-            setTimeout(() => router.push("/dashboard"), 3000);
+            setTimeout(() => router.push("/take-order"), 3000);
           },
           onError: (err) => {
             setButtonError(err?.response?.data?.message || "Kullanıcı adı/e-posta veya şifre hatalı.");
